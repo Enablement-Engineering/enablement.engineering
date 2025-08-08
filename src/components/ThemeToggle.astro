@@ -1,0 +1,75 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle color theme"
+  title="Toggle color theme"
+  style="
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  "
+>
+  <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+  <span class="theme-toggle-text">Theme</span>
+</button>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  
+  // Get stored theme or system preference
+  function getTheme() {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  
+  // Apply theme
+  function setTheme(theme: string) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateToggleText(theme);
+  }
+  
+  // Update button text
+  function updateToggleText(theme: string) {
+    const text = toggle?.querySelector('.theme-toggle-text');
+    const icon = toggle?.querySelector('.theme-toggle-icon');
+    if (text && icon) {
+      if (theme === 'dark') {
+        icon.textContent = '☀️';
+        text.textContent = 'Light';
+      } else {
+        icon.textContent = '🌙';
+        text.textContent = 'Dark';
+      }
+    }
+  }
+  
+  // Initialize
+  setTheme(getTheme());
+  
+  // Handle toggle
+  toggle?.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    setTheme(next);
+  });
+  
+  // Handle system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+</script>

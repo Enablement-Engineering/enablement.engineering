@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = (await getCollection('posts'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Base title="Home">
+  <header>
+    <h1>enablement.engineering</h1>
+    <p style="font-size: 1.25rem; color: var(--color-muted); margin-bottom: 3rem;">
+      Exploring AI as the translation layer between human intention and computational capability.
+    </p>
+  </header>
+  
+  <section aria-label="Recent posts">
+    <h2 class="sr-only">Recent Posts</h2>
+    
+    {posts.length === 0 ? (
+      <p>No posts yet. Check back soon!</p>
+    ) : (
+      <ul style="list-style: none; padding: 0;">
+        {posts.map((post) => (
+          <li style="margin-bottom: 2rem;">
+            <article>
+              <h3 style="margin-bottom: 0.5rem;">
+                <a href={`/posts/${post.slug}`} style="text-decoration: none; color: var(--color-text);">
+                  {post.data.title}
+                </a>
+              </h3>
+              <time datetime={post.data.pubDate.toISOString()} style="color: var(--color-muted); font-size: 0.875rem;">
+                {post.data.pubDate.toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </time>
+              <p style="margin-top: 0.5rem;">{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <ul style="list-style: none; padding: 0; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  {post.data.tags.map(tag => (
+                    <li>
+                      <span style="font-size: 0.875rem; padding: 0.25rem 0.5rem; background: var(--color-border); border-radius: 0.25rem;">
+                        {tag}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>

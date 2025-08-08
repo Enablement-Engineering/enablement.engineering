@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.astro.build)",
+      "WebFetch(domain:astro.build)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
+}
