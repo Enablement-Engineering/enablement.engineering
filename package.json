@@ -6,7 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "inbox": "python scripts/inbox-processor.py",
+    "publish": "python scripts/content-publisher.py",
+    "maintain": "python scripts/system-maintainer.py",
+    "organize-media": "python scripts/media-organizer.py",
+    "validate-links": "python scripts/link-validator.py"
   },
   "dependencies": {
     "astro": "^5.12.3"

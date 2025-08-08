@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# obsidian vault (private content management)
+obsidian-vault/
+
+# content management system
+scripts/__pycache__/
+*.pyc
