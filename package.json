@@ -7,13 +7,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "inbox": "python scripts/inbox-processor.py",
-    "publish": "python scripts/content-publisher.py",
-    "maintain": "python scripts/system-maintainer.py",
-    "organize-media": "python scripts/media-organizer.py",
-    "validate-links": "python scripts/link-validator.py"
+    "inbox": "node scripts/inbox-processor.js",
+    "publish": "node scripts/content-publisher.js",
+    "maintain": "node scripts/system-maintainer.js",
+    "organize-media": "node scripts/media-organizer.js",
+    "validate-links": "node scripts/link-validator.js"
   },
   "dependencies": {
-    "astro": "^5.12.3"
+    "@instantlyeasy/claude-code-sdk-ts": "^0.3.3",
+    "astro": "^5.12.8"
   }
 }
