@@ -1,58 +1,138 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
+import Heading from '../components/Heading.astro';
+import ArrowLink from '../components/ArrowLink.astro';
 
-const posts = (await getCollection('posts'))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const roles = [
+  { text: "Enablement Engineer", color: "bg-accent" },
+  { text: "Systems Thinker", color: "bg-accent" }
+];
+
+const highlights = [
+{
+  "title": "Lead AI Engineer",
+  "org": "Deque Systems",
+  "orgUrl": "https://deque.com",
+  "description": "Leading the development of AI-driven tools like <a href=\"https://dequeuniversity.com/introducing-axe-assistant\">axe Assistant</a>, I focus on creating accessibility solutions that integrate seamlessly across all stages of the Software Development Lifecycle. My mission is to ensure our <strong>digital world</strong> reflects and serves the diverse lived experiences of <strong>all people</strong>."
+}
+];
+
 ---
 
-<Base title="Home">
-  <header>
-    <h1>enablement.engineering</h1>
-    <p style="font-size: 1.25rem; color: var(--color-muted); margin-bottom: 3rem;">
-      Exploring AI as the translation layer between human intention and computational capability.
-    </p>
-  </header>
-  
-  <section aria-label="Recent posts">
-    <h2 class="sr-only">Recent Posts</h2>
-    
-    {posts.length === 0 ? (
-      <p>No posts yet. Check back soon!</p>
-    ) : (
-      <ul style="list-style: none; padding: 0;">
-        {posts.map((post) => (
-          <li style="margin-bottom: 2rem;">
-            <article>
-              <h3 style="margin-bottom: 0.5rem;">
-                <a href={`/posts/${post.slug}`} style="text-decoration: none; color: var(--color-text);">
-                  {post.data.title}
-                </a>
-              </h3>
-              <time datetime={post.data.pubDate.toISOString()} style="color: var(--color-muted); font-size: 0.875rem;">
-                {post.data.pubDate.toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </time>
-              <p style="margin-top: 0.5rem;">{post.data.description}</p>
-              {post.data.tags.length > 0 && (
-                <ul style="list-style: none; padding: 0; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                  {post.data.tags.map(tag => (
-                    <li>
-                      <span style="font-size: 0.875rem; padding: 0.25rem 0.5rem; background: var(--color-border); border-radius: 0.25rem;">
-                        {tag}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+<Layout 
+  title="Dylan Isaac - Enablement Engineer & Systems Thinker"
+  description="Lead AI Engineer at Deque Systems, dedicated to democratizing technology and empowering people through accessible AI solutions that adapt to human needs."
+>
+  <Header />
+  <main id="main" class="max-w-2xl mx-auto px-6 md:px-8 py-16 space-y-16">
+    <!-- Hero Section -->
+    <section class="space-y-6 max-w-2xl">
+      <Heading 
+        level={1}
+        class="sr-only"
+      >
+        Dylan Isaac
+      </Heading>
+
+      <div class="w-56 h-56 mx-auto mb-8">
+        <img
+          src="/me-square.jpg"
+          alt="Dylan Isaac smiling in front of a frozen lake and mountains in Colorado."
+          width="224"
+          height="224"
+          loading="eager"
+          decoding="async"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+
+      <div class="flex justify-center">
+        <div class="flex items-center gap-3">
+          {roles.map((role, index) => (
+            <>
+              <span class="text-lg text-content-muted dark:text-dark-content-muted">
+                {role.text}
+              </span>
+              {index < roles.length - 1 && (
+                <span 
+                  class={`w-2 h-2 rounded-full ${role.color} animate-pulse`}
+                  aria-hidden="true"
+                ></span>
               )}
-            </article>
-          </li>
+            </>
+          ))}
+        </div>
+      </div>
+      
+      <p class="text-lg leading-relaxed">
+        I am an engineer, designer, and systems thinker dedicated to <strong>democratizing technology</strong> and 
+        <strong>empowering people</strong>. 
+      </p>
+        
+      <p class="text-lg leading-relaxed">
+        My current focus is on leveraging generative AI to create more 
+        intuitive and accessible computing experiences - 
+        <em>
+          having computers adapt to people's needs 
+          rather than forcing people to adapt to computers.
+        </em>
+      </p>
+    </section>
+
+    <!-- Professional Highlights -->
+    <Section title="Current Work" backgroundColor="primary">
+      <div class="space-y-lg max-w-2xl">
+        {highlights.map(({ title, org, orgUrl, description }) => (
+          <div class="space-y-sm group">
+            <div class="flex items-baseline gap-2">
+              <Heading level={3} class="text-h4 font-medium">{title}</Heading>
+              <a 
+                href={orgUrl}
+                class="text-h4 text-content-muted dark:text-dark-content-muted underline decoration-1 underline-offset-4 hover:decoration-2 focus:decoration-2 hover:text-accent focus:text-accent transition-all"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {org}
+              </a>
+            </div>
+            <p 
+              class="text-body text-content-muted dark:text-dark-content-muted leading-relaxed [&_a]:text-content-muted [&_a]:dark:text-dark-content-muted [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-4 [&_a]:hover:decoration-2 [&_a]:focus:decoration-2 [&_a]:hover:text-accent [&_a]:focus:text-accent [&_a]:transition-all" 
+              set:html={description} 
+            />
+          </div>
         ))}
-      </ul>
-    )}
-  </section>
-</Base>
+      </div>
+    </Section>
+
+    <!-- Quick Links -->
+    <section id="lets-work-together">
+      <h2 class="sr-only">Let's Work Together</h2>
+      <nav class="flex flex-wrap gap-6" aria-label="Quick links">
+        <ArrowLink href="/writing">
+          Read my writing
+        </ArrowLink>
+        <ArrowLink href="/projects">
+          View my projects
+        </ArrowLink>
+        <ArrowLink href="/rss.xml" external>
+          Subscribe via RSS
+        </ArrowLink>
+      </nav>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Add subtle animation to role dots on hover */
+  .roles:hover .dot {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+</style>

@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Catalyst v1 tokens */
+    --color-ink:#0B0E14;
+    --color-paper:#F7F5F2;
+    --color-accent:#F97316; /* Orange */
+    --color-teal:#0F766E;
+    --color-link:#1D4ED8; /* Blue-700 for AA */
+    --color-focus:#FFD60A;
+    --surface-0:var(--color-paper);
+    --surface-1:#F2F0EC;
+    --text:var(--color-ink);
+    --border:#E5E7EB;
+    --gridline: rgba(11,14,20,0.06);
+  }
+  
+  html {
+    scroll-padding-top: 110px; /* Account for sticky header with extra buffer */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--text);
+    background: var(--surface-0);
+  }
+  
+  /* Offset for anchor links to account for sticky header */
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  h6[id] {
+    scroll-margin-top: 110px;
+  }
+
+  /* Simple underlined links by default */
+  a {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: color-mix(in oklab, var(--color-link), transparent 60%);
+    text-underline-offset: 4px;
+    color: var(--color-link);
+  }
+
+  .dark a { /* future dark mode: tune via tokens */ }
+  
+}
+
+@layer components {
+  /* Semantic roles mapped to tokens */
+  .text-primary { color: var(--text); }
+  .text-secondary { color: color-mix(in oklab, var(--text), transparent 40%); }
+  .bg-primary { background: var(--surface-0); }
+  .bg-secondary { background: var(--surface-1); }
+  .link { color: var(--color-link); }
+  .focus-ring-yellow { outline: none; box-shadow: 0 0 0 2px var(--color-focus); }
+  .border-role { border-color: var(--border); }
+  .cta-bg { background: var(--color-teal); color: var(--color-paper); }
+  .accent-ornament { color: var(--color-accent); }
+
+  /* Add a utility class to remove link styling when needed */
+  .no-underline-link {
+    @apply no-underline hover:no-underline;
+  }
+  
+  /* Header shrink styles when scrolled - fixed height container */
+  body.header-scrolled header {
+    height: 48px !important;
+    overflow: hidden;
+  }
+  
+  body.header-scrolled #header-content {
+    height: 48px !important;
+    padding-top: 0.25rem !important;  /* 4px */
+    padding-bottom: 0.25rem !important; /* 4px */
+  }
+  
+  body.header-scrolled #header-content > div {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  body.header-scrolled #logo-text {
+    font-size: 1rem !important; /* Smaller text */
+    line-height: 1.2 !important;
+  }
+  
+  body.header-scrolled #toc-sidebar {
+    top: 48px !important; /* Match header height */
+  }
+  
+  /* Add subtle shadow when scrolled */
+  body.header-scrolled #header-wrapper {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 
+                0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  }
+  
+  .dark body.header-scrolled #header-wrapper {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 
+                0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .tag {
+    @apply inline-flex items-center 
+           px-4 py-1.5 
+           rounded-full 
+           text-small font-medium
+           transition-all;
+  }
+
+  .tag-primary {
+    @apply bg-transparent text-primary-dark border-4 border-primary 
+           hover:bg-primary/10
+           dark:text-primary-light dark:border-primary-light 
+           dark:hover:bg-primary/20;
+  }
+
+  .tag-secondary {
+    @apply bg-transparent text-secondary-dark border-4 border-secondary 
+           hover:bg-secondary/10
+           dark:text-secondary-light dark:border-secondary-light 
+           dark:hover:bg-secondary/20;
+  }
+
+  .tag-accent {
+    @apply bg-transparent text-accent-dark border-4 border-accent 
+           hover:bg-accent/10
+           dark:text-accent-light dark:border-accent-light 
+           dark:hover:bg-accent/20;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary 
+           focus:ring-offset-2 dark:focus:ring-offset-dark-surface;
+  }
+
+  .heading-1 {
+    @apply text-h1 font-bold text-content dark:text-dark-content;
+  }
+
+  .heading-2 {
+    @apply text-h2 font-bold text-content dark:text-dark-content;
+  }
+
+  .heading-3 {
+    @apply text-h3 font-medium text-content dark:text-dark-content;
+  }
+
+  .body-text {
+    @apply text-body text-content-muted dark:text-dark-content-muted;
+  }
+
+  /* Reveal grid overlay */
+  .reveal-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: 
+      linear-gradient(to right, var(--gridline) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11,14,20,0.04) 1px, transparent 1px);
+    background-size: calc(100% / 12) 100%, 100% 24px; /* 12-col + baseline 24px */
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 120ms ease-in-out;
+  }
+  .reveal-overlay.is-visible { opacity: 1; }
+} 
