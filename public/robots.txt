@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dylanisa.ac/sitemap-index.xml

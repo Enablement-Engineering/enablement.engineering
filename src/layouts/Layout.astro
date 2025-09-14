@@ -1,127 +1,57 @@
 ---
-interface Props {
-  title: string;
-  description?: string;
-  image?: string;
-  ogType?: string;
+import '../styles/globals.css';
+
+export interface Props {
+	title: string;
+	description?: string;
+	showGrid?: boolean;
 }
 
-const { 
-  title, 
-  description = "Enablement Engineer and Systems Thinker dedicated to democratizing technology and empowering people through accessible AI solutions.",
-  image = "/me-square.jpg",
-  ogType = "website"
+const {
+	title,
+	description = "Enablement Engineering - Building capabilities through technology and learning",
+	showGrid = false
 } = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://dylanisa.ac/");
-const ogImageURL = new URL(image, Astro.site || "https://dylanisa.ac/");
-
-const jsonLD = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Dylan Isaac",
-  "jobTitle": "Lead AI Engineer",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Deque Systems",
-    "url": "https://deque.com"
-  },
-  "url": canonicalURL.toString(),
-  "sameAs": [
-    "https://github.com/dylansheffer",
-    "https://linkedin.com/in/dylansheffer"
-  ],
-  "description": description,
-  "image": ogImageURL.toString()
-};
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/fonts/glacial-indifference.css">
-    <meta name="theme-color" content="#eab308" />
-    <meta name="generator" content={Astro.generator} />
-    
-    <style is:inline>
-      ::selection {
-        background-color: rgba(236, 72, 153, 0.3) !important;
-        color: inherit !important;
-      }
-      ::-moz-selection {
-        background-color: rgba(236, 72, 153, 0.3) !important;
-        color: inherit !important;
-      }
-    </style>
-    
-    <!-- SEO -->
-    <title>{title}</title>
-    <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" type="application/rss+xml" title="Dylan Isaac - Writing" href="/rss.xml" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="1200" />
-    <meta property="og:image:alt" content="Dylan Isaac - Enablement Engineer" />
-    <meta property="og:site_name" content="Dylan Isaac" />
-    <meta property="og:locale" content="en_US" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImageURL} />
-    
-    <!-- Additional SEO -->
-    <meta name="author" content="Dylan Isaac" />
-    <meta name="robots" content="index, follow" />
-    <meta name="keywords" content="Dylan Isaac, Enablement Engineer, Systems Thinker, Accessibility, AI, Deque Systems, axe Assistant" />
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLD)} />
-    
-    <script is:inline>
-      // Initialize theme
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-    
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
-      }
-    </script>
-  </head>
-  <body class="min-h-screen bg-surface dark:bg-dark-surface text-content dark:text-dark-content">
-    <slot />
-    <div id="reveal-overlay" class="reveal-overlay" aria-hidden="true"></div>
-    <script is:inline>
-      // Toggle reveal grid with Alt+G
-      document.addEventListener('keydown', (e) => {
-        if ((e.altKey || e.metaKey) && (e.key.toLowerCase() === 'g')) {
-          const overlay = document.getElementById('reveal-overlay');
-          overlay?.classList.toggle('is-visible');
-        }
-      });
-    </script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+	</head>
+	<body class="bg-paper text-ink font-sans antialiased">
+		<!-- Optional grid overlay for design system -->
+		{showGrid && (
+			<div class="fixed inset-0 pointer-events-none z-50 opacity-5">
+				<div class="grid-container h-full">
+					<div class="grid-12 h-full">
+						{Array.from({ length: 12 }, (_, i) => (
+							<div key={i} class="border-l border-ink/20 h-full"></div>
+						))}
+					</div>
+				</div>
+			</div>
+		)}
+
+		<main class="min-h-screen">
+			<slot />
+		</main>
+	</body>
 </html>

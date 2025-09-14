@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Brand Colors */
+:root {
+  /* Primary colors - Yellow as main brand color */
+  --color-primary: #ffd60a;
+  --color-primary-foreground: #0b0e14;
+
+  /* Secondary colors - Black/Ink for text and content */
+  --color-secondary: #0b0e14;
+  --color-secondary-foreground: #f7f5f2;
+
+  /* Accent colors - Orange for accents */
+  --color-accent: #f97316;
+  --color-accent-foreground: #0b0e14;
+
+  /* Link colors - Teal for links only */
+  --color-link: #0f766e;
+  --color-link-foreground: #f7f5f2;
+
+  /* Semantic colors */
+  --color-background: #f7f5f2;
+  --color-foreground: #0b0e14;
+  --color-card: #f7f5f2;
+  --color-card-foreground: #0b0e14;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0b0e14;
+
+  /* Muted colors */
+  --color-muted: #ede8e1;
+  --color-muted-foreground: #6b7280;
+
+  /* Border and input */
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #f97316;
+
+  /* Destructive */
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  /* Success */
+  --color-success: #10b981;
+  --color-success-foreground: #ffffff;
+
+  /* Warning */
+  --color-warning: #f59e0b;
+  --color-warning-foreground: #ffffff;
+
+  /* Spacing and sizing */
+  --radius: 0.5rem;
+  --font-family-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* Dark mode support */
+.dark {
+  --color-background: #0b0e14;
+  --color-foreground: #f7f5f2;
+  --color-card: #1a1d24;
+  --color-card-foreground: #f7f5f2;
+  --color-popover: #1a1d24;
+  --color-popover-foreground: #f7f5f2;
+  --color-muted: #2d2f36;
+  --color-muted-foreground: #9ca3af;
+  --color-border: #374151;
+  --color-input: #374151;
+}
+
+/* Base layer styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
+
+  /* Improved link styles */
+  a {
+    @apply text-link hover:underline transition-colors duration-200;
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+}
+
+/* Component layer styles */
+@layer components {
+  /* Off-kilter utility classes from brand system */
+  .off-kilter-1 {
+    transform: rotate(1deg);
+  }
+
+  .off-kilter-neg-1 {
+    transform: rotate(-1deg);
+  }
+
+  .off-kilter-0-5 {
+    transform: rotate(0.5deg);
+  }
+
+  .off-kilter-neg-0-5 {
+    transform: rotate(-0.5deg);
+  }
+
+  /* Grid utilities */
+  .grid-container {
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
+  }
+
+  .grid-12 {
+    @apply grid grid-cols-12 gap-6;
+  }
+
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Card base styles */
+  .card-base {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  /* Input base styles */
+  .input-base {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+/* Utility layer styles */
+@layer utilities {
+  /* Text color utilities */
+  .text-ink {
+    color: var(--color-foreground);
+  }
+
+  .text-paper {
+    color: var(--color-background);
+  }
+
+  /* Background color utilities */
+  .bg-paper {
+    background-color: var(--color-background);
+  }
+
+  .bg-ink {
+    background-color: var(--color-foreground);
+  }
+
+  /* Animation utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .animate-stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .animate-stagger-1,
+    .animate-stagger-2,
+    .animate-stagger-3 {
+      animation: none;
+    }
+
+    .off-kilter-1,
+    .off-kilter-neg-1,
+    .off-kilter-0-5,
+    .off-kilter-neg-0-5 {
+      transform: none;
+    }
+  }
+}
