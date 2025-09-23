@@ -1,0 +1,208 @@
+---
+import { LogoSquare } from './Logo';
+import { navigationItems } from '../config/navigation';
+
+export interface Props {
+  currentPage?: string;
+}
+
+const { currentPage } = Astro.props;
+---
+
+<nav
+  id="navigation"
+  aria-label="Main navigation"
+  class="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-neutral-200
+         after:absolute after:inset-x-0 after:top-full after:h-6
+         after:bg-gradient-to-b after:from-background/95 after:via-background/50 after:to-transparent
+         after:pointer-events-none"
+  style="transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
+>
+  <div class="grid-container">
+    <!-- Desktop/Tablet Navigation -->
+    <div class="hidden md:flex items-center justify-between py-6">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3 no-underline group">
+        <LogoSquare className="w-8 h-8 transition-transform group-hover:scale-105" client:load />
+        <span class="text-xl font-semibold text-ink">Enablement Engineering</span>
+      </a>
+
+      <!-- Nav Items -->
+      <div class="flex items-center space-x-8">
+        {navigationItems.map(({ href, label }) => (
+          <a
+            href={href}
+            class={`transition-colors no-underline ${
+              currentPage === href
+                ? 'bg-primary-400 text-secondary-900 px-4 py-2 rounded-md font-extrabold transform rotate-1.5'
+                : 'text-ink hover:text-secondary-800 font-medium'
+            }`}
+            aria-current={currentPage === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden flex items-center justify-between py-4">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 no-underline">
+        <LogoSquare className="w-8 h-8" client:load />
+        <span class="text-lg font-bold text-ink">Enablement Engineering</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        class="p-2 text-ink hover:text-secondary-800 transition-colors"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div
+      id="mobile-menu"
+      class="md:hidden border-t border-neutral-200 py-4 hidden"
+      aria-hidden="true"
+    >
+      <nav class="flex flex-col space-y-3" aria-label="Mobile navigation menu">
+        {navigationItems.filter(item => item.showInMobile !== false).map(({ href, label }) => (
+          <a
+            href={href}
+            class={`py-2 transition-colors no-underline inline-block ${
+              currentPage === href
+                ? 'text-ink border-b-2 border-primary-400 font-extrabold'
+                : 'text-ink hover:text-secondary-800 font-medium'
+            }`}
+            aria-current={currentPage === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+
+    if (!toggle || !menu || !icon) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('hidden');
+
+      // Toggle menu visibility
+      menu.classList.toggle('hidden');
+      menu.setAttribute('aria-hidden', (!isOpen).toString());
+      toggle.setAttribute('aria-expanded', isOpen.toString());
+
+      // Animate icon
+      if (isOpen) {
+        icon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+      } else {
+        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+        menu.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        menu.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        toggle.focus();
+      }
+    });
+  }
+
+  function initScrollBehavior() {
+    const nav = document.getElementById('navigation');
+    if (!nav) return;
+
+    let lastScrollY = window.scrollY;
+    let isScrolling = false;
+
+    function updateNavVisibility() {
+      const currentScrollY = window.scrollY;
+      const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+      const isDesktop = window.innerWidth >= 768;
+
+      // Show nav if:
+      // - On desktop (always visible)
+      // - At very top of page (within 50px)
+      // - Any upward scroll movement
+      const showNav = isDesktop ||
+                     currentScrollY <= 50 ||
+                     scrollDirection === 'up';
+
+      if (showNav) {
+        nav.style.transform = 'translateY(0)';
+      } else {
+        nav.style.transform = 'translateY(-100%)';
+      }
+
+      lastScrollY = currentScrollY;
+      isScrolling = false;
+    }
+
+    function onScroll() {
+      if (!isScrolling) {
+        requestAnimationFrame(updateNavVisibility);
+        isScrolling = true;
+      }
+    }
+
+    // Handle resize to show nav on desktop
+    function onResize() {
+      if (window.innerWidth >= 768) {
+        nav.style.transform = 'translateY(0)';
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }
+
+  // Initialize both mobile menu and scroll behavior
+  function initializeNavigation() {
+    initMobileMenu();
+    initScrollBehavior();
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNavigation);
+  } else {
+    initializeNavigation();
+  }
+</script>

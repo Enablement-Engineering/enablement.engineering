@@ -3,63 +3,50 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About - Enablement Engineering" description="Learn about our mission to enable teams through technology and structured learning">
-	<h1>About Enablement Engineering</h1>
+	<section class="py-16 lg:py-24">
+			<div class="max-w-4xl mx-auto space-y-12">
+				<div class="text-center space-y-6">
+					<h1 class="text-4xl lg:text-6xl font-bold text-ink leading-tight">
+						About Enablement Engineering
+					</h1>
+					<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed">
+						Welcome to Enablement Engineering - where we bridge the gap between technology and human potential.
+					</p>
+				</div>
 
-	<p>Welcome to Enablement Engineering - where we bridge the gap between technology and human potential.</p>
+				<div class="space-y-16">
+					<div class="card-base p-8 off-kilter-0-5">
+						<h2 class="text-3xl font-bold text-ink mb-6">Our Mission</h2>
+						<p class="text-lg text-neutral-600 mb-6">
+							We focus on building capabilities that empower teams to achieve more through:
+						</p>
+						<ul class="space-y-3 text-neutral-600">
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
+								<span>Strategic technology implementation</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
+								<span>Knowledge management systems</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
+								<span>Process optimization and automation</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
+								<span>Learning and development frameworks</span>
+							</li>
+						</ul>
+					</div>
 
-	<section>
-		<h2>Our Mission</h2>
-		<p>We focus on building capabilities that empower teams to achieve more through:</p>
-		<ul>
-			<li>Strategic technology implementation</li>
-			<li>Knowledge management systems</li>
-			<li>Process optimization and automation</li>
-			<li>Learning and development frameworks</li>
-		</ul>
+					<div class="card-base p-8 off-kilter-neg-0-5">
+						<h2 class="text-3xl font-bold text-ink mb-6">What We Do</h2>
+						<p class="text-lg text-neutral-600 leading-relaxed">
+							Our work spans across multiple domains, always with the goal of enabling others to be more effective and productive. We believe in building ladders, not walls - creating pathways that lift teams up and help them reach new heights of capability and performance.
+						</p>
+					</div>
+				</div>
+			</div>
 	</section>
-
-	<section>
-		<h2>What We Do</h2>
-		<p>Our work spans across multiple domains, always with the goal of enabling others to be more effective and productive.</p>
-	</section>
-
-	<nav>
-		<a href="/">← Back to Home</a>
-	</nav>
 </Layout>
-
-<style>
-	section {
-		margin: 2rem 0;
-	}
-
-	h2 {
-		color: #1e40af;
-		border-bottom: 2px solid #e5e7eb;
-		padding-bottom: 0.5rem;
-	}
-
-	ul {
-		margin: 1rem 0;
-	}
-
-	li {
-		margin: 0.5rem 0;
-	}
-
-	nav {
-		margin-top: 3rem;
-		padding-top: 2rem;
-		border-top: 1px solid #e5e7eb;
-	}
-
-	nav a {
-		color: #2563eb;
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	nav a:hover {
-		text-decoration: underline;
-	}
-</style>

@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import Navigation from '../components/Navigation.astro';
 
 export interface Props {
 	title: string;
@@ -12,6 +13,9 @@ const {
 	description = "Enablement Engineering - Building capabilities through technology and learning",
 	showGrid = false
 } = Astro.props;
+
+// Auto-detect current page from URL
+const currentPage = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -36,7 +40,16 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 	</head>
-	<body class="bg-paper text-ink font-sans antialiased">
+	<body class="bg-paper text-ink font-sans antialiased pt-20 md:pt-24">
+		<!-- Skip Link -->
+		<a
+			href="#main-content"
+			class="skip-link"
+		>
+			Skip to main content
+		</a>
+
+
 		<!-- Optional grid overlay for design system -->
 		{showGrid && (
 			<div class="fixed inset-0 pointer-events-none z-50 opacity-5">
@@ -50,8 +63,17 @@ const {
 			</div>
 		)}
 
-		<main class="min-h-screen">
-			<slot />
+		<!-- Navigation -->
+		<div class="grid-container">
+			<Navigation currentPage={currentPage} />
+		</div>
+
+		<!-- Main Content -->
+		<main id="main-content" class="min-h-screen focus:outline-none focus:ring-2 focus:ring-accent-600" tabindex="-1">
+			<div class="grid-container">
+				<slot />
+			</div>
 		</main>
+
 	</body>
 </html>

@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { AutogrowTextarea } from '../components/ui/AutogrowTextarea.jsx';
+---
+
+<Layout title="Contact - Enablement Engineering" description="Get in touch to discuss how we can help enable your team's capabilities">
+	<!-- Hero Section -->
+		<section class="py-16 lg:py-24">
+			<div class="max-w-4xl mx-auto text-center space-y-6">
+				<h1 class="text-4xl lg:text-6xl font-bold text-ink leading-tight">
+					Start the Conversation
+				</h1>
+				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed">
+					Ready to build capabilities that enable your team to achieve more? Let's discuss your goals and explore how we can help.
+				</p>
+			</div>
+		</section>
+
+		<!-- Contact Content -->
+		<section class="py-16">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+				<!-- Contact Form -->
+				<div class="card-base p-8 off-kilter-0-5">
+					<h2 class="text-2xl font-bold text-ink mb-6">Let's Talk</h2>
+					<form class="space-y-6">
+						<div class="space-y-2">
+							<label for="name" class="text-sm font-medium text-ink">Name</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								required
+								class="input-base"
+								placeholder="Your name"
+							>
+						</div>
+						<div class="space-y-2">
+							<label for="email" class="text-sm font-medium text-ink">Email</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								class="input-base"
+								placeholder="you@company.com"
+							>
+						</div>
+						<div class="space-y-2">
+							<label for="company" class="text-sm font-medium text-ink">Company</label>
+							<input
+								type="text"
+								id="company"
+								name="company"
+								class="input-base"
+								placeholder="Your organization (optional)"
+							>
+						</div>
+						<div class="space-y-2">
+							<label for="project" class="text-sm font-medium text-ink">Project Type</label>
+							<select id="project" name="project" class="input-base">
+								<option value="">Select an area of interest</option>
+								<option value="technology-solutions">Technology Solutions</option>
+								<option value="process-optimization">Process Optimization</option>
+								<option value="knowledge-systems">Knowledge Systems</option>
+								<option value="full-enablement">Comprehensive Enablement</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						<div class="space-y-2">
+							<label for="message" class="text-sm font-medium text-ink">Message</label>
+							<AutogrowTextarea
+								id="message"
+								name="message"
+								required
+								placeholder="Tell us about your goals, challenges, or what you're looking to enable in your organization..."
+								client:load
+							/>
+						</div>
+						<button
+							type="submit"
+							class="w-full inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary-400 text-secondary-900 hover:bg-primary-300 h-12 px-8"
+						>
+							Send Message
+						</button>
+					</form>
+				</div>
+
+				<!-- Contact Information -->
+				<div class="space-y-8">
+					<div class="space-y-6">
+						<h2 class="text-2xl font-bold text-ink">Get In Touch</h2>
+						<p class="text-lg text-neutral-600 leading-relaxed">
+							We're here to help you build the capabilities your organization needs to thrive. Whether you have a specific challenge in mind or want to explore possibilities, we'd love to hear from you.
+						</p>
+					</div>
+
+					<!-- Contact Methods -->
+					<div class="space-y-6">
+						<div class="flex items-start space-x-4">
+							<div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+								<div class="w-6 h-6 bg-accent-500 rounded"></div>
+							</div>
+							<div>
+								<h3 class="font-semibold text-ink">Email Us</h3>
+								<p class="text-neutral-600">hello@enablement.engineering</p>
+								<p class="text-sm text-neutral-500">We typically respond within 24 hours</p>
+							</div>
+						</div>
+
+						<div class="flex items-start space-x-4">
+							<div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+								<div class="w-6 h-6 bg-primary-400 rounded"></div>
+							</div>
+							<div>
+								<h3 class="font-semibold text-ink">Schedule a Call</h3>
+								<p class="text-neutral-600">Book a 30-minute discovery session</p>
+								<p class="text-sm text-neutral-500">Perfect for exploring possibilities</p>
+							</div>
+						</div>
+
+						<div class="flex items-start space-x-4">
+							<div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+								<div class="w-6 h-6 bg-secondary-600 rounded"></div>
+							</div>
+							<div>
+								<h3 class="font-semibold text-ink">LinkedIn</h3>
+								<p class="text-neutral-600">Connect with us professionally</p>
+								<p class="text-sm text-neutral-500">Follow our insights and updates</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- What to Expect -->
+					<div class="card-base p-6 off-kilter-neg-0-5">
+						<h3 class="text-lg font-semibold text-ink mb-4">What to Expect</h3>
+						<ul class="space-y-3 text-sm text-neutral-600">
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-1.5 flex-shrink-0"></div>
+								<span>Initial conversation to understand your needs</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-1.5 flex-shrink-0"></div>
+								<span>Collaborative scoping and proposal development</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-1.5 flex-shrink-0"></div>
+								<span>Transparent timeline and milestone planning</span>
+							</li>
+							<li class="flex items-start space-x-3">
+								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-1.5 flex-shrink-0"></div>
+								<span>Ongoing communication throughout the engagement</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section class="py-16 bg-neutral-50 rounded-2xl off-kilter-0-5">
+			<div class="max-w-4xl mx-auto space-y-12">
+				<div class="text-center space-y-6">
+					<h2 class="text-3xl lg:text-4xl font-bold text-ink">Frequently Asked Questions</h2>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="space-y-6">
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">What size teams do you work with?</h3>
+							<p class="text-neutral-600">We work with organizations of all sizes, from startup teams of 5 to enterprise teams of 500+. Our approach scales to meet your specific context and constraints.</p>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">How long do engagements typically last?</h3>
+							<p class="text-neutral-600">Projects range from 6-week focused initiatives to 6-month comprehensive transformations. We prefer iterative approaches that deliver value early and often.</p>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">Do you provide ongoing support?</h3>
+							<p class="text-neutral-600">Yes, we offer various support models including retainer arrangements for ongoing optimization and capability development.</p>
+						</div>
+					</div>
+					<div class="space-y-6">
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">What technologies do you specialize in?</h3>
+							<p class="text-neutral-600">We're technology-agnostic and focus on choosing the right tools for your context. Our strength is in system design and integration, not specific platform advocacy.</p>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">Can you work with our existing tools?</h3>
+							<p class="text-neutral-600">Absolutely. We prioritize building on your existing investments and enhancing what's already working rather than wholesale replacement.</p>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-3">What industries do you serve?</h3>
+							<p class="text-neutral-600">We work across industries, with particular strength in technology, professional services, and organizations undergoing digital transformation.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+</Layout>

@@ -57,7 +57,20 @@ export default {
         // Core brand colors
         ink: '#0b0e14', // Primary text
         paper: '#f7f5f2', // Background/parchment
-        link: '#0f766e', // Links - teal for links only
+        link: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0f766e', // Links - teal for links only
+          700: '#0f5132',
+          800: '#134e4a',
+          900: '#134e4a',
+          950: '#042f2e',
+          DEFAULT: '#0f766e',
+        },
 
         // Standard shadcn/ui colors
         border: '#e5e7eb',
@@ -126,7 +139,10 @@ export default {
         'fade-in-up': 'fadeInUp 0.5s ease-out',
         'fade-in': 'fadeIn 0.3s ease-out',
         'slide-in-right': 'slideInRight 0.3s ease-out',
-        'bounce-gentle': 'bounceGentle 2s infinite',
+        'bounce-gentle': 'bounceGentle 3s infinite',
+        'sloppy-sun-hover': 'sloppySunHover 3s infinite',
+        'sloppy-sun-bounce-and-spin': 'sloppySunBounceAndSpin 3s infinite',
+        'slow-rotation': 'slowRotation 6s linear infinite',
       },
       keyframes: {
         fadeInUp: {
@@ -155,12 +171,48 @@ export default {
         },
         bounceGentle: {
           '0%, 100%': {
-            transform: 'translateY(-5%)',
-            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+            transform: 'translateY(-1%)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           },
           '50%': {
-            transform: 'translateY(0)',
-            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+            transform: 'translateY(1%)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+        },
+        sloppySunHover: {
+          '0%': {
+            transform: 'translateY(-1%) scale(1.25) rotate(0deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+          '50%': {
+            transform: 'translateY(1%) scale(1.25) rotate(180deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+          '100%': {
+            transform: 'translateY(-1%) scale(1.25) rotate(360deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+        },
+        sloppySunBounceAndSpin: {
+          '0%': {
+            transform: 'translateY(-1%) rotate(0deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+          '50%': {
+            transform: 'translateY(1%) rotate(180deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+          '100%': {
+            transform: 'translateY(-1%) rotate(360deg)',
+            animationTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          },
+        },
+        slowRotation: {
+          '0%': {
+            transform: 'scale(1.25) rotate(0deg)',
+          },
+          '100%': {
+            transform: 'scale(1.25) rotate(360deg)',
           },
         },
       },

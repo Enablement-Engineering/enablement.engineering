@@ -84,6 +84,18 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
+  /* Skip link accessibility styles */
+  .skip-link {
+    @apply absolute top-0 left-0 bg-primary-400 text-secondary-900 px-4 py-2 font-medium rounded-br-md;
+    z-index: 100;
+    transform: translateY(-100%);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
   /* Typography improvements */
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold leading-tight;
@@ -121,19 +133,51 @@
 @layer components {
   /* Off-kilter utility classes from brand system */
   .off-kilter-1 {
-    transform: rotate(1deg);
+    transform: rotate(1deg) translateZ(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  .off-kilter-1:hover,
+  .off-kilter-1:focus-within {
+    transform: rotate(0deg) translateZ(0);
   }
 
   .off-kilter-neg-1 {
-    transform: rotate(-1deg);
+    transform: rotate(-1deg) translateZ(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  .off-kilter-neg-1:hover,
+  .off-kilter-neg-1:focus-within {
+    transform: rotate(0deg) translateZ(0);
   }
 
   .off-kilter-0-5 {
-    transform: rotate(0.5deg);
+    transform: rotate(0.5deg) translateZ(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  .off-kilter-0-5:hover,
+  .off-kilter-0-5:focus-within {
+    transform: rotate(0deg) translateZ(0);
   }
 
   .off-kilter-neg-0-5 {
-    transform: rotate(-0.5deg);
+    transform: rotate(-0.5deg) translateZ(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+
+  .off-kilter-neg-0-5:hover,
+  .off-kilter-neg-0-5:focus-within {
+    transform: rotate(0deg) translateZ(0);
   }
 
   /* Grid utilities */
@@ -158,6 +202,199 @@
   /* Input base styles */
   .input-base {
     @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Service grid with automatic row-based icon shapes */
+  .service-grid {
+    /* CSS custom properties for shape morphing */
+    --square-outer: 0.5rem;
+    --square-inner: 0.25rem;
+    --circle-outer: 50%;
+    --circle-inner: 50%;
+    --transition: border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Base icon styling */
+  .service-grid .service-icon {
+    transition: var(--transition);
+    will-change: border-radius;
+  }
+
+  .service-grid .service-icon > * {
+    transition: var(--transition);
+    will-change: border-radius;
+  }
+
+  /* Row 1, 3, 5... (odd rows) - Squares by default */
+  .service-grid .service-card:nth-child(6n+1) .service-icon,
+  .service-grid .service-card:nth-child(6n+2) .service-icon,
+  .service-grid .service-card:nth-child(6n+3) .service-icon {
+    border-radius: var(--square-outer);
+  }
+
+  .service-grid .service-card:nth-child(6n+1) .service-icon > *,
+  .service-grid .service-card:nth-child(6n+2) .service-icon > *,
+  .service-grid .service-card:nth-child(6n+3) .service-icon > * {
+    border-radius: var(--square-inner);
+  }
+
+  /* Row 2, 4, 6... (even rows) - Circles by default */
+  .service-grid .service-card:nth-child(6n+4) .service-icon,
+  .service-grid .service-card:nth-child(6n+5) .service-icon,
+  .service-grid .service-card:nth-child(6n+6) .service-icon {
+    border-radius: var(--circle-outer);
+  }
+
+  .service-grid .service-card:nth-child(6n+4) .service-icon > *,
+  .service-grid .service-card:nth-child(6n+5) .service-icon > *,
+  .service-grid .service-card:nth-child(6n+6) .service-icon > * {
+    border-radius: var(--circle-inner);
+  }
+
+  /* Hover/focus morphing - squares become circles */
+  .service-grid .service-card:nth-child(6n+1):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+2):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+3):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+1):focus-within .service-icon,
+  .service-grid .service-card:nth-child(6n+2):focus-within .service-icon,
+  .service-grid .service-card:nth-child(6n+3):focus-within .service-icon {
+    border-radius: var(--circle-outer);
+  }
+
+  .service-grid .service-card:nth-child(6n+1):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+2):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+3):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+1):focus-within .service-icon > *,
+  .service-grid .service-card:nth-child(6n+2):focus-within .service-icon > *,
+  .service-grid .service-card:nth-child(6n+3):focus-within .service-icon > * {
+    border-radius: var(--circle-inner);
+  }
+
+  /* Hover/focus morphing - circles become squares */
+  .service-grid .service-card:nth-child(6n+4):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+5):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+6):hover .service-icon,
+  .service-grid .service-card:nth-child(6n+4):focus-within .service-icon,
+  .service-grid .service-card:nth-child(6n+5):focus-within .service-icon,
+  .service-grid .service-card:nth-child(6n+6):focus-within .service-icon {
+    border-radius: var(--square-outer);
+  }
+
+  .service-grid .service-card:nth-child(6n+4):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+5):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+6):hover .service-icon > *,
+  .service-grid .service-card:nth-child(6n+4):focus-within .service-icon > *,
+  .service-grid .service-card:nth-child(6n+5):focus-within .service-icon > *,
+  .service-grid .service-card:nth-child(6n+6):focus-within .service-icon > * {
+    border-radius: var(--square-inner);
+  }
+
+  /* Responsive adjustments for smaller grids */
+  @media (max-width: 1023px) {
+    /* 2-column grid on tablet - every 4 items cycle */
+    .service-grid .service-card:nth-child(4n+1) .service-icon,
+    .service-grid .service-card:nth-child(4n+2) .service-icon {
+      border-radius: var(--square-outer);
+    }
+
+    .service-grid .service-card:nth-child(4n+1) .service-icon > *,
+    .service-grid .service-card:nth-child(4n+2) .service-icon > * {
+      border-radius: var(--square-inner);
+    }
+
+    .service-grid .service-card:nth-child(4n+3) .service-icon,
+    .service-grid .service-card:nth-child(4n+4) .service-icon {
+      border-radius: var(--circle-outer);
+    }
+
+    .service-grid .service-card:nth-child(4n+3) .service-icon > *,
+    .service-grid .service-card:nth-child(4n+4) .service-icon > * {
+      border-radius: var(--circle-inner);
+    }
+  }
+
+  @media (max-width: 767px) {
+    /* 1-column grid on mobile - alternating items */
+    .service-grid .service-card:nth-child(odd) .service-icon {
+      border-radius: var(--square-outer);
+    }
+
+    .service-grid .service-card:nth-child(odd) .service-icon > * {
+      border-radius: var(--square-inner);
+    }
+
+    .service-grid .service-card:nth-child(even) .service-icon {
+      border-radius: var(--circle-outer);
+    }
+
+    .service-grid .service-card:nth-child(even) .service-icon > * {
+      border-radius: var(--circle-inner);
+    }
+  }
+
+  /* Process grid with simple alternating pattern */
+  .process-grid .process-icon {
+    transition: var(--transition);
+    will-change: border-radius;
+  }
+
+  .process-grid .process-icon > * {
+    transition: var(--transition);
+    will-change: border-radius;
+  }
+
+  /* Alternating pattern: square, circle, square */
+  .process-grid .process-step:nth-child(odd) .process-icon {
+    border-radius: var(--square-outer);
+  }
+
+  .process-grid .process-step:nth-child(odd) .process-icon > * {
+    border-radius: var(--square-inner);
+  }
+
+  .process-grid .process-step:nth-child(even) .process-icon {
+    border-radius: var(--circle-outer);
+  }
+
+  .process-grid .process-step:nth-child(even) .process-icon > * {
+    border-radius: var(--circle-inner);
+  }
+
+  /* Hover morphing for process icons */
+  .process-grid .process-step:nth-child(odd):hover .process-icon,
+  .process-grid .process-step:nth-child(odd):focus-within .process-icon {
+    border-radius: var(--circle-outer);
+  }
+
+  .process-grid .process-step:nth-child(odd):hover .process-icon > *,
+  .process-grid .process-step:nth-child(odd):focus-within .process-icon > * {
+    border-radius: var(--circle-inner);
+  }
+
+  .process-grid .process-step:nth-child(even):hover .process-icon,
+  .process-grid .process-step:nth-child(even):focus-within .process-icon {
+    border-radius: var(--square-outer);
+  }
+
+  .process-grid .process-step:nth-child(even):hover .process-icon > *,
+  .process-grid .process-step:nth-child(even):focus-within .process-icon > * {
+    border-radius: var(--square-inner);
+  }
+
+  /* Performance optimization for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .service-grid,
+    .process-grid {
+      --transition: none;
+    }
+
+    .service-grid .service-icon,
+    .service-grid .service-icon > *,
+    .process-grid .process-icon,
+    .process-grid .process-icon > * {
+      transition: none;
+      will-change: auto;
+    }
   }
 }
 
@@ -212,6 +449,162 @@
     .off-kilter-0-5,
     .off-kilter-neg-0-5 {
       transform: none;
+      transition: none;
+      will-change: auto;
+    }
+
+    .off-kilter-1:hover,
+    .off-kilter-1:focus-within,
+    .off-kilter-neg-1:hover,
+    .off-kilter-neg-1:focus-within,
+    .off-kilter-0-5:hover,
+    .off-kilter-0-5:focus-within,
+    .off-kilter-neg-0-5:hover,
+    .off-kilter-neg-0-5:focus-within {
+      transform: none;
     }
   }
 }
+
+/* Sun component animations */
+@layer base {
+  .sun-morphing {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sun-hover-pulse:hover {
+    animation: sunPulse 1.5s infinite;
+  }
+
+  .sun-hover-rotate:hover {
+    animation: sunRotate 2s linear infinite;
+  }
+
+  .sun-hover-morph:hover {
+    transform: scale(1.1) rotate(15deg);
+    filter: drop-shadow(0 4px 8px rgba(255, 214, 10, 0.3));
+  }
+
+  @keyframes sunPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes sunRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Sun variant switching animations */
+  .sun-switching {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .sun-fade-enter {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .sun-fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .sun-fade-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sun-fade-exit-active {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  /* Performance optimization for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .sun-morphing,
+    .sun-hover-pulse,
+    .sun-hover-rotate,
+    .sun-hover-morph,
+    .sun-switching,
+    .sun-fade-enter,
+    .sun-fade-enter-active,
+    .sun-fade-exit,
+    .sun-fade-exit-active {
+      transition: none;
+      animation: none;
+      transform: none;
+      filter: none;
+    }
+  }
+}
+
+  /* Sun morphing on hover - combines bounce and spin */
+  .sun-morph-on-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+
+  /* Enhanced bounce animation that works with morphing */
+  .sun-bounce-default {
+    animation: bounceGentle 3s infinite;
+  }
+
+  /* Logo-wide hover effect for sun morphing */
+  .logo-morph-hover:hover .sun-morph-on-hover {
+    animation: bounceGentle 3s infinite, sunRotate 3s linear infinite;
+  }
+
+  /* TODO: Sun morph hover effects - commented out for now
+   * Complete hover morph system from circle to sloppy sun with animations
+   *
+   * Goals:
+   *   - Smooth opacity transition between circle and sloppy variants
+   *   - Scale sloppy sun to 1.25x from center on hover
+   *   - Add slow continuous rotation to sloppy sun while hovered
+   *
+   * Technical challenges:
+   *   - Transform conflicts between inline positioning, CSS hover, and animations
+   *   - SVG coordinate system complications with scaling/transform-origin
+   *   - Multiple transform properties competing for same element
+   *
+   * Current working state: Simple circle sun with gentle bounce animation
+   *
+   * Potential approaches for future implementation:
+   *   1. Use CSS custom properties to compose transforms dynamically
+   *   2. Restructure SVG hierarchy to separate positioning from animation
+   *   3. Apply transforms to different nested elements (wrapper vs inner)
+   *   4. Investigate CSS transform-style: preserve-3d for layered transforms
+   */
+
+  /* .sun-morph-on-hover .sun-circle {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .sun-morph-on-hover .sun-sloppy {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .sun-morph-on-hover:hover .sun-circle {
+    opacity: 0;
+  }
+
+  .sun-morph-on-hover:hover .sun-sloppy {
+    opacity: 1;
+    animation: slowRotation 6s linear infinite;
+  } */
+
