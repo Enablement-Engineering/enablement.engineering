@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const definitionEntries = await getCollection('definitions');
+	return definitionEntries.map(entry => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Get all definitions for related terms linking
+const allDefinitions = await getCollection('definitions');
+const definitionSlugs = allDefinitions.map(d => d.slug);
+---
+
+<Layout title={`${entry.data.term} | Definitions | Enablement Engineering`} description={entry.data.shortDefinition}>
+	<article class="py-16 lg:py-24">
+		<div class="max-w-3xl mx-auto">
+			<!-- Header -->
+			<header class="mb-12">
+				<a href="/" class="inline-flex items-center text-neutral-500 hover:text-neutral-700 mb-6 group">
+					<svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+					</svg>
+					Back to Home
+				</a>
+
+				<div class="mb-4">
+					<span class="inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary-100 text-primary-700">
+						Definition
+					</span>
+				</div>
+
+				<h1 class="text-3xl lg:text-4xl font-bold text-ink mb-4 leading-tight">
+					{entry.data.term}
+				</h1>
+
+				<p class="text-xl text-neutral-600">
+					{entry.data.shortDefinition}
+				</p>
+			</header>
+
+			<!-- Content -->
+			<div class="prose prose-lg prose-neutral max-w-none
+				prose-headings:text-ink prose-headings:font-bold
+				prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+				prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+				prose-p:text-neutral-700 prose-p:leading-relaxed
+				prose-a:text-link-600 prose-a:no-underline hover:prose-a:underline
+				prose-strong:text-ink
+				prose-em:text-neutral-700
+				prose-code:bg-neutral-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
+				prose-pre:bg-secondary-900 prose-pre:text-neutral-100 prose-pre:overflow-x-auto
+				prose-blockquote:border-l-primary-400 prose-blockquote:bg-neutral-50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+				prose-ul:list-disc prose-ul:pl-6
+				prose-ol:list-decimal prose-ol:pl-6
+				prose-li:text-neutral-700
+				prose-hr:border-neutral-200
+			">
+				<Content />
+			</div>
+
+			<!-- Related Terms -->
+			{entry.data.relatedTerms && entry.data.relatedTerms.length > 0 && (
+				<div class="mt-12 pt-8 border-t border-neutral-200">
+					<h2 class="text-lg font-semibold text-ink mb-4">Related Terms</h2>
+					<div class="flex flex-wrap gap-2">
+						{entry.data.relatedTerms.map((term) => {
+							const slug = term.toLowerCase();
+							const hasDefinition = definitionSlugs.includes(slug);
+							return hasDefinition ? (
+								<a href={`/definitions/${slug}`} class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full hover:bg-neutral-200 transition-colors no-underline">
+									{term}
+								</a>
+							) : (
+								<span class="px-3 py-1 bg-neutral-100 text-neutral-500 text-sm rounded-full">
+									{term}
+								</span>
+							);
+						})}
+					</div>
+				</div>
+			)}
+
+			<!-- CTA -->
+			<div class="mt-12 p-8 bg-neutral-50 rounded-2xl">
+				<h2 class="text-xl font-bold text-ink mb-4">
+					Want to see glass-box architecture in action?
+				</h2>
+				<p class="text-neutral-600 mb-6">
+					Learn how I build agentic systems with full transparency and ownership.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<a href="/approach" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg font-semibold bg-primary-400 text-secondary-900 hover:bg-primary-300 h-11 px-6 no-underline text-sm">
+						Our Approach
+					</a>
+					<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg font-semibold bg-secondary-900 text-neutral-50 hover:bg-secondary-800 h-11 px-6 no-underline text-sm">
+						View Services
+					</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</Layout>

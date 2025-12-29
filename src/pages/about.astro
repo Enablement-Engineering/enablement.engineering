@@ -2,51 +2,105 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About - Enablement Engineering" description="Learn about our mission to enable teams through technology and structured learning">
+<Layout title="About | Enablement Engineering" description="Dylan Isaac, founder of Enablement LLC. Building AI systems that extend human capability without hiding their reasoning.">
 	<section class="py-16 lg:py-24">
-			<div class="max-w-4xl mx-auto space-y-12">
-				<div class="text-center space-y-6">
-					<h1 class="text-4xl lg:text-6xl font-bold text-ink leading-tight">
-						About Enablement Engineering
-					</h1>
-					<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed">
-						Welcome to Enablement Engineering - where we bridge the gap between technology and human potential.
-					</p>
-				</div>
-
-				<div class="space-y-16">
-					<div class="card-base p-8 off-kilter-0-5">
-						<h2 class="text-3xl font-bold text-ink mb-6">Our Mission</h2>
-						<p class="text-lg text-neutral-600 mb-6">
-							We focus on building capabilities that empower teams to achieve more through:
+		<div class="max-w-3xl mx-auto">
+			<!-- Opening -->
+			<div class="mb-16">
+				<div class="flex flex-col md:flex-row md:items-start gap-8">
+					<img
+						src="/me-square.jpg"
+						alt="Dylan Isaac"
+						class="w-40 h-40 rounded-2xl object-cover flex-shrink-0"
+					/>
+					<div>
+						<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-6">
+							About
+						</h1>
+						<p class="text-xl lg:text-2xl text-neutral-700 leading-relaxed mb-4">
+							I'm Dylan Isaac, founder of Enablement LLC.
 						</p>
-						<ul class="space-y-3 text-neutral-600">
-							<li class="flex items-start space-x-3">
-								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
-								<span>Strategic technology implementation</span>
-							</li>
-							<li class="flex items-start space-x-3">
-								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
-								<span>Knowledge management systems</span>
-							</li>
-							<li class="flex items-start space-x-3">
-								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
-								<span>Process optimization and automation</span>
-							</li>
-							<li class="flex items-start space-x-3">
-								<div class="w-1.5 h-1.5 bg-accent-500 rounded-full mt-2 flex-shrink-0"></div>
-								<span>Learning and development frameworks</span>
-							</li>
-						</ul>
-					</div>
-
-					<div class="card-base p-8 off-kilter-neg-0-5">
-						<h2 class="text-3xl font-bold text-ink mb-6">What We Do</h2>
-						<p class="text-lg text-neutral-600 leading-relaxed">
-							Our work spans across multiple domains, always with the goal of enabling others to be more effective and productive. We believe in building ladders, not walls - creating pathways that lift teams up and help them reach new heights of capability and performance.
+						<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed">
+							I build AI systems that extend human capability without hiding their reasoning—for organizations where compliance isn't optional.
 						</p>
 					</div>
 				</div>
 			</div>
+
+			<hr class="border-neutral-200 mb-16" />
+
+			<!-- Background -->
+			<div class="mb-16">
+				<h2 class="text-2xl font-bold text-ink mb-6">Background</h2>
+				<div class="prose prose-lg max-w-none text-neutral-700">
+					<p>
+						Former <strong>Lead AI Engineer at Deque Systems</strong>, where I built axe Assistant and developed foundational approaches to AI-generated accessibility content.
+					</p>
+					<p>
+						A decade of full-stack engineering experience, with deep expertise in accessibility, agentic systems, and the intersection of the two.
+					</p>
+				</div>
+			</div>
+
+			<hr class="border-neutral-200 mb-16" />
+
+			<!-- Philosophy -->
+			<div class="mb-16">
+				<h2 class="text-2xl font-bold text-ink mb-8">Philosophy</h2>
+				<div class="space-y-8">
+					<div class="card-base p-6 off-kilter-0-5">
+						<h3 class="text-lg font-bold text-ink mb-2">Ladders, not walls.</h3>
+						<p class="text-neutral-600">
+							Technology should extend what people can do, not create dependency.
+						</p>
+					</div>
+
+					<div class="card-base p-6 off-kilter-neg-0-5">
+						<h3 class="text-lg font-bold text-ink mb-2">Mirrors, not slot machines.</h3>
+						<p class="text-neutral-600">
+							Systems should reflect user intention, not capture attention.
+						</p>
+					</div>
+
+					<div class="card-base p-6 off-kilter-0-5">
+						<h3 class="text-lg font-bold text-ink mb-2">Glass box, not black box.</h3>
+						<p class="text-neutral-600">
+							Reasoning should be visible and auditable, especially when compliance matters.
+						</p>
+					</div>
+				</div>
+
+				<p class="text-lg text-neutral-700 mt-8 leading-relaxed">
+					I believe accessibility work is alignment work—the accessibility community has decades of experience with problems AI alignment researchers are only now addressing.
+				</p>
+			</div>
+
+			<hr class="border-neutral-200 mb-16" />
+
+			<!-- Beyond Work -->
+			<div class="mb-16">
+				<h2 class="text-2xl font-bold text-ink mb-6">Beyond Work</h2>
+				<div class="prose prose-lg max-w-none text-neutral-700">
+					<p>
+						I live in Buffalo, NY with my partner Kaitlin, our dog Basil, and our kitten Corni.
+					</p>
+					<p>
+						I cultivate bonsai—the practice of shaping growth through constraint and patient guidance. It's not a bad metaphor for how I think about AI systems.
+					</p>
+				</div>
+			</div>
+
+			<hr class="border-neutral-200 mb-16" />
+
+			<!-- CTA -->
+			<div class="text-center">
+				<h2 class="text-2xl font-bold text-ink mb-6">
+					Get in Touch
+				</h2>
+				<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
+					Start a Conversation
+				</a>
+			</div>
+		</div>
 	</section>
 </Layout>

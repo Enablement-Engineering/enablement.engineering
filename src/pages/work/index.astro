@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work');
+const featuredWork = allWork.filter(w => w.data.featured);
+const otherWork = allWork.filter(w => !w.data.featured);
+---
+
+<Layout title="Work | Enablement Engineering" description="Selected projects demonstrating enablement engineering in practice—orchestration design, accessibility systems, and AI-powered workflows.">
+	<section class="py-16 lg:py-24">
+		<div class="max-w-5xl mx-auto">
+			<!-- Header -->
+			<div class="text-center mb-16">
+				<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-6">
+					Selected Work
+				</h1>
+				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+					Projects that demonstrate enablement engineering in practice—orchestration design, accessibility systems, and infrastructure that compounds in value.
+				</p>
+			</div>
+
+			<!-- Featured Projects -->
+			{featuredWork.length > 0 && (
+				<div class="space-y-8 mb-16">
+					{featuredWork.map((project) => (
+						<a href={`/work/${project.slug}`} class="block group">
+							<article class="card-base p-8 lg:p-10 hover:shadow-lg transition-all off-kilter-0-5 group-hover:off-kilter-0">
+								<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
+									<div>
+										<div class="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-sm font-medium rounded-full mb-3">
+											Featured Project
+										</div>
+										<h2 class="text-2xl lg:text-3xl font-bold text-ink group-hover:text-primary-600 transition-colors">
+											{project.data.title}
+										</h2>
+										<p class="text-lg text-neutral-500 mt-2">{project.data.client}</p>
+									</div>
+									<div class="text-left lg:text-right">
+										<p class="text-neutral-500">{project.data.duration}</p>
+									</div>
+								</div>
+
+								<p class="text-lg text-neutral-600 leading-relaxed mb-6">
+									{project.data.description}
+								</p>
+
+								{project.data.results && (
+									<div class="flex flex-wrap gap-4 mb-6">
+										{project.data.results.map((result) => (
+											<div class="bg-neutral-50 px-4 py-2 rounded-lg">
+												<p class="text-sm text-neutral-500">{result.metric}</p>
+												<p class="text-lg font-semibold text-ink">{result.value}</p>
+											</div>
+										))}
+									</div>
+								)}
+
+								<div class="flex flex-wrap gap-2">
+									{project.data.tags.map((tag) => (
+										<span class="px-2 py-1 bg-neutral-100 text-neutral-600 text-sm rounded">
+											{tag}
+										</span>
+									))}
+								</div>
+
+								<div class="mt-6 flex items-center text-primary-600 font-medium group-hover:text-primary-700">
+									Read the full case study
+									<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+									</svg>
+								</div>
+							</article>
+						</a>
+					))}
+				</div>
+			)}
+
+			<!-- Other Work -->
+			{otherWork.length > 0 && (
+				<div>
+					<h2 class="text-2xl font-bold text-ink mb-8">Other Projects</h2>
+					<div class="grid md:grid-cols-2 gap-6">
+						{otherWork.map((project) => (
+							<a href={`/work/${project.slug}`} class="block group">
+								<article class="card-base p-6 hover:shadow-lg transition-all h-full">
+									<h3 class="text-xl font-semibold text-ink mb-2 group-hover:text-primary-600 transition-colors">
+										{project.data.title}
+									</h3>
+									<p class="text-neutral-500 mb-4">{project.data.client}</p>
+									<p class="text-neutral-600 text-sm leading-relaxed">
+										{project.data.description}
+									</p>
+								</article>
+							</a>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Additional Proof Points -->
+			<div class="mt-20 py-12 border-t border-neutral-200">
+				<h2 class="text-2xl font-bold text-ink mb-8 text-center">Additional Engagements</h2>
+				<div class="grid md:grid-cols-3 gap-8">
+					<div class="text-center">
+						<p class="text-lg font-semibold text-ink mb-2">Scribely</p>
+						<p class="text-neutral-600 text-sm">Context engineering consultation for AI-powered alt-text generation</p>
+					</div>
+					<div class="text-center">
+						<p class="text-lg font-semibold text-ink mb-2">SRI International</p>
+						<p class="text-neutral-600 text-sm">NSF Advisory Board for student-AI interaction safety research</p>
+					</div>
+					<div class="text-center">
+						<p class="text-lg font-semibold text-ink mb-2">CSUN 2025</p>
+						<p class="text-neutral-600 text-sm">Presenting "Escaping to Semantic Freedom" at premier accessibility conference</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="text-center py-12 mt-8 border-t border-neutral-200">
+				<h2 class="text-2xl font-bold text-ink mb-4">
+					Have a challenge in mind?
+				</h2>
+				<p class="text-lg text-neutral-600 mb-8">
+					Let's discuss how orchestration design could work for your context.
+				</p>
+				<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
+					Start a Conversation
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allWriting = await getCollection('writing');
+const sortedWriting = allWriting.sort((a, b) =>
+	b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+
+const essays = sortedWriting.filter(w => w.data.type === 'essay');
+const promptLab = sortedWriting.filter(w => w.data.type === 'prompt-lab');
+const caseStudies = sortedWriting.filter(w => w.data.type === 'case-study');
+
+function formatDate(date: Date) {
+	return date.toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	});
+}
+---
+
+<Layout title="Writing | Enablement Engineering" description="Essays, case studies, and prompt demonstrations exploring AI orchestration, accessibility engineering, and enablement philosophy.">
+	<section class="py-16 lg:py-24">
+		<div class="max-w-4xl mx-auto">
+			<!-- Header -->
+			<div class="text-center mb-16">
+				<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-6">
+					Writing
+				</h1>
+				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+					Essays exploring enablement philosophy, case studies demonstrating the approach, and prompt demonstrations showing the methodology in action.
+				</p>
+			</div>
+
+			<!-- Essays -->
+			{essays.length > 0 && (
+				<div class="mb-16">
+					<h2 class="text-2xl font-bold text-ink mb-8 flex items-center">
+						<span class="w-8 h-1 bg-primary-400 mr-4"></span>
+						Essays
+					</h2>
+					<div class="space-y-6">
+						{essays.map((article) => (
+							<a href={`/writing/${article.slug}`} class="block group">
+								<article class="card-base p-6 lg:p-8 hover:shadow-lg transition-all">
+									<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+										<div class="flex-1">
+											<h3 class="text-xl lg:text-2xl font-semibold text-ink mb-2 group-hover:text-primary-600 transition-colors">
+												{article.data.title}
+											</h3>
+											<p class="text-neutral-600 leading-relaxed mb-4">
+												{article.data.description}
+											</p>
+											<div class="flex flex-wrap gap-2">
+												{article.data.tags.slice(0, 3).map((tag) => (
+													<span class="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded">
+														{tag}
+													</span>
+												))}
+											</div>
+										</div>
+										<div class="text-sm text-neutral-500 lg:text-right whitespace-nowrap">
+											{formatDate(article.data.publishedAt)}
+										</div>
+									</div>
+								</article>
+							</a>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Prompt Lab -->
+			{promptLab.length > 0 && (
+				<div class="mb-16">
+					<h2 class="text-2xl font-bold text-ink mb-4 flex items-center">
+						<span class="w-8 h-1 bg-accent-500 mr-4"></span>
+						Prompt Lab
+					</h2>
+					<p class="text-neutral-600 mb-8 ml-12">
+						Glass-box demonstrations of actual prompts and methodology—showing the work, not just the results.
+					</p>
+					<div class="space-y-6">
+						{promptLab.map((article) => (
+							<a href={`/writing/${article.slug}`} class="block group">
+								<article class="card-base p-6 lg:p-8 hover:shadow-lg transition-all border-l-4 border-l-accent-500">
+									<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+										<div class="flex-1">
+											<div class="inline-block px-2 py-0.5 bg-accent-100 text-accent-700 text-xs font-medium rounded mb-2">
+												Prompt Demonstration
+											</div>
+											<h3 class="text-xl font-semibold text-ink mb-2 group-hover:text-accent-600 transition-colors">
+												{article.data.title}
+											</h3>
+											<p class="text-neutral-600 leading-relaxed">
+												{article.data.description}
+											</p>
+										</div>
+										<div class="text-sm text-neutral-500 lg:text-right whitespace-nowrap">
+											{formatDate(article.data.publishedAt)}
+										</div>
+									</div>
+								</article>
+							</a>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Case Studies (Writing format) -->
+			{caseStudies.length > 0 && (
+				<div class="mb-16">
+					<h2 class="text-2xl font-bold text-ink mb-8 flex items-center">
+						<span class="w-8 h-1 bg-secondary-600 mr-4"></span>
+						Case Studies
+					</h2>
+					<div class="space-y-6">
+						{caseStudies.map((article) => (
+							<a href={`/writing/${article.slug}`} class="block group">
+								<article class="card-base p-6 lg:p-8 hover:shadow-lg transition-all">
+									<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+										<div class="flex-1">
+											<h3 class="text-xl font-semibold text-ink mb-2 group-hover:text-primary-600 transition-colors">
+												{article.data.title}
+											</h3>
+											<p class="text-neutral-600 leading-relaxed">
+												{article.data.description}
+											</p>
+										</div>
+										<div class="text-sm text-neutral-500 lg:text-right whitespace-nowrap">
+											{formatDate(article.data.publishedAt)}
+										</div>
+									</div>
+								</article>
+							</a>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Subscribe CTA -->
+			<div class="mt-16 p-8 bg-neutral-50 rounded-2xl text-center off-kilter-0-5">
+				<h2 class="text-2xl font-bold text-ink mb-4">
+					Stay updated
+				</h2>
+				<p class="text-lg text-neutral-600 mb-6">
+					New essays and prompt demonstrations as I publish them. No spam, unsubscribe anytime.
+				</p>
+				<p class="text-neutral-500 text-sm italic">
+					Newsletter coming soon. For now, <a href="/contact" class="text-link-600 hover:underline">reach out directly</a>.
+				</p>
+			</div>
+		</div>
+	</section>
+</Layout>

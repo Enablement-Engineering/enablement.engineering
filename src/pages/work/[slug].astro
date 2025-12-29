@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+	const workEntries = await getCollection('work');
+	return workEntries.map(entry => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} | Work | Enablement Engineering`} description={entry.data.description}>
+	<article class="py-16 lg:py-24">
+		<div class="max-w-4xl mx-auto">
+			<!-- Header -->
+			<header class="mb-12">
+				<a href="/work" class="inline-flex items-center text-neutral-500 hover:text-neutral-700 mb-6 group">
+					<svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+					</svg>
+					Back to Work
+				</a>
+
+				<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-4">
+					{entry.data.title}
+				</h1>
+
+				<p class="text-xl text-neutral-600 mb-6">
+					{entry.data.description}
+				</p>
+
+				<div class="flex flex-wrap gap-6 text-sm">
+					<div>
+						<p class="text-neutral-500">Client</p>
+						<p class="font-semibold text-ink">{entry.data.client}</p>
+					</div>
+					<div>
+						<p class="text-neutral-500">Engagement</p>
+						<p class="font-semibold text-ink capitalize">{entry.data.engagement}</p>
+					</div>
+					<div>
+						<p class="text-neutral-500">Duration</p>
+						<p class="font-semibold text-ink">{entry.data.duration}</p>
+					</div>
+					{entry.data.investment && (
+						<div>
+							<p class="text-neutral-500">Investment</p>
+							<p class="font-semibold text-ink">{entry.data.investment}</p>
+						</div>
+					)}
+				</div>
+			</header>
+
+			<!-- Results Summary -->
+			{entry.data.results && entry.data.results.length > 0 && (
+				<div class="bg-neutral-50 p-6 lg:p-8 rounded-2xl mb-12 off-kilter-0-5">
+					<h2 class="text-lg font-semibold text-ink mb-4">Key Results</h2>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+						{entry.data.results.map((result) => (
+							<div>
+								<p class="text-2xl lg:text-3xl font-bold text-primary-600">{result.value}</p>
+								<p class="text-sm text-neutral-600">{result.metric}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- Content -->
+			<div class="prose prose-lg prose-neutral max-w-none
+				prose-headings:text-ink prose-headings:font-bold
+				prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+				prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+				prose-p:text-neutral-700 prose-p:leading-relaxed
+				prose-a:text-link-600 prose-a:no-underline hover:prose-a:underline
+				prose-strong:text-ink
+				prose-code:bg-neutral-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+				prose-pre:bg-secondary-900 prose-pre:text-white
+				prose-blockquote:border-l-primary-400 prose-blockquote:bg-neutral-50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
+				prose-table:border-collapse
+				prose-th:bg-neutral-100 prose-th:p-3 prose-th:text-left prose-th:font-semibold
+				prose-td:p-3 prose-td:border-t prose-td:border-neutral-200
+			">
+				<Content />
+			</div>
+
+			<!-- Tags -->
+			{entry.data.tags && entry.data.tags.length > 0 && (
+				<div class="mt-12 pt-8 border-t border-neutral-200">
+					<div class="flex flex-wrap gap-2">
+						{entry.data.tags.map((tag) => (
+							<span class="px-3 py-1 bg-neutral-100 text-neutral-600 text-sm rounded-full">
+								{tag}
+							</span>
+						))}
+					</div>
+				</div>
+			)}
+
+			<!-- CTA -->
+			<div class="mt-16 p-8 bg-neutral-50 rounded-2xl text-center">
+				<h2 class="text-2xl font-bold text-ink mb-4">
+					Interested in similar work?
+				</h2>
+				<p class="text-lg text-neutral-600 mb-6">
+					Let's discuss how this approach could apply to your context.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-primary-400 text-secondary-900 hover:bg-primary-300 h-12 px-8 no-underline">
+						View Services
+					</a>
+					<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-white hover:bg-accent-600 h-12 px-8 no-underline">
+						Start a Conversation
+					</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</Layout>

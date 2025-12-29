@@ -1,3 +1,3 @@
-Please read in the following rules  to understand how to use this project
+# Claude Instructions
 
-- @.claude/rules/archon-rules.md
+See AGENTS.md for build commands and code style guidelines.

@@ -9,6 +9,8 @@ interface LogoProps {
   textColor?: string;
   sunVariant?: 'circle' | 'sloppy';
   animateSun?: boolean;
+  hoverMorph?: boolean;
+  defaultBounce?: boolean;
 }
 
 interface SunProps {

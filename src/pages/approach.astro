@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How We Work | Enablement Engineering" description="The methodology behind agentic systems—from the Core Four to Glass Box AI. Understand how we build transparent, auditable AI orchestration.">
+	<section class="py-16 lg:py-24">
+		<div class="max-w-4xl mx-auto">
+			<!-- Header -->
+			<div class="text-center mb-16">
+				<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-6">
+					How We Work
+				</h1>
+				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+					Transparent methodology for building AI systems that actually work—and that you can audit, extend, and own.
+				</p>
+			</div>
+
+			<!-- The Core Four -->
+			<div class="card-base p-8 lg:p-12 mb-12 off-kilter-0-5">
+				<h2 class="text-2xl font-bold text-ink mb-6">The Core Four</h2>
+				<p class="text-lg text-neutral-600 mb-8">
+					Every agentic system comes down to four elements:
+				</p>
+				<div class="grid md:grid-cols-2 gap-6">
+					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-primary-400">
+						<h3 class="text-xl font-semibold text-ink mb-2">Context</h3>
+						<p class="text-neutral-600">What the agent knows—the information, constraints, and domain understanding it operates with.</p>
+					</div>
+					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-primary-400">
+						<h3 class="text-xl font-semibold text-ink mb-2">Model</h3>
+						<p class="text-neutral-600">The intelligence layer—the reasoning engine that processes context and generates responses.</p>
+					</div>
+					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-accent-500">
+						<h3 class="text-xl font-semibold text-ink mb-2">Prompt</h3>
+						<p class="text-neutral-600">The instructions—how you shape behavior, set constraints, and define expected outputs.</p>
+					</div>
+					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-accent-500">
+						<h3 class="text-xl font-semibold text-ink mb-2">Tools</h3>
+						<p class="text-neutral-600">The actions it can take—discrete operations that connect reasoning to real-world effects.</p>
+					</div>
+				</div>
+				<p class="text-lg text-ink font-semibold mt-8">
+					This is what turns AI coding into agentic coding.
+				</p>
+			</div>
+
+			<!-- Why Procedures Matter -->
+			<div class="card-base p-8 lg:p-12 mb-12">
+				<h2 class="text-2xl font-bold text-ink mb-6">Why Procedures Matter</h2>
+				<p class="text-xl text-ink font-semibold mb-6">
+					Tool calls are the unit of trusted agent work.
+				</p>
+				<div class="prose prose-lg max-w-none text-neutral-700 mb-8">
+					<p>
+						When an agent calls a tool, it's quantizing fuzzy natural language into a discrete, auditable operation. The more of your tokens that become tool calls, the more your system is:
+					</p>
+				</div>
+
+				<div class="space-y-4 mb-8">
+					<div class="flex items-start gap-4 p-4 bg-neutral-50 rounded-lg">
+						<div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+							<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold text-ink">Understanding intent correctly</h3>
+							<p class="text-neutral-600">It parsed what you wanted</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-4 p-4 bg-neutral-50 rounded-lg">
+						<div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+							<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold text-ink">Routing successfully</h3>
+							<p class="text-neutral-600">It matched intent to the right procedure</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-4 p-4 bg-neutral-50 rounded-lg">
+						<div class="flex-shrink-0 w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+							<svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold text-ink">Operating auditably</h3>
+							<p class="text-neutral-600">The output came from a known, tested process</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-neutral-100 p-6 rounded-xl border-l-4 border-l-secondary-500">
+					<p class="text-neutral-700 mb-4">
+						<strong class="text-ink">Skills</strong> (Claude skills, and the emerging open standard) are packaged procedures—portable, governed, documented.
+					</p>
+					<p class="text-ink font-semibold">
+						Teams don't scale on clever prompting. They scale on standardized procedures with governance.
+					</p>
+					<p class="text-neutral-600 mt-4 italic">
+						For accessibility and compliance work, this isn't optional. The procedures ARE the audit trail.
+					</p>
+				</div>
+			</div>
+
+			<!-- The Operating Method -->
+			<div class="mb-16">
+				<h2 class="text-3xl font-bold text-ink mb-8 text-center">The Operating Method</h2>
+				<p class="text-lg text-neutral-600 text-center mb-12 max-w-2xl mx-auto">
+					Intent → Translation → Orchestration → Execution → Evidence → Learning
+				</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div class="card-base p-6 off-kilter-0-5">
+						<div class="text-sm font-medium text-primary-600 mb-2">Step 1</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Intent</h3>
+						<p class="text-neutral-600 text-sm">
+							Capture the job to be done + constraints. What are you actually trying to accomplish?
+						</p>
+					</div>
+
+					<div class="card-base p-6">
+						<div class="text-sm font-medium text-primary-600 mb-2">Step 2</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Translation</h3>
+						<p class="text-neutral-600 text-sm">
+							Convert intent into unambiguous tasks. Structure the fuzzy into the precise.
+						</p>
+					</div>
+
+					<div class="card-base p-6 off-kilter-neg-0-5">
+						<div class="text-sm font-medium text-primary-600 mb-2">Step 3</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Orchestration</h3>
+						<p class="text-neutral-600 text-sm">
+							Tools, agents, roles, gates, governance. Design how the pieces work together.
+						</p>
+					</div>
+
+					<div class="card-base p-6">
+						<div class="text-sm font-medium text-accent-600 mb-2">Step 4</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Execution</h3>
+						<p class="text-neutral-600 text-sm">
+							Humans + agents act; checks are built-in. The system does the work with oversight.
+						</p>
+					</div>
+
+					<div class="card-base p-6 off-kilter-0-5">
+						<div class="text-sm font-medium text-accent-600 mb-2">Step 5</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Evidence</h3>
+						<p class="text-neutral-600 text-sm">
+							Logs, diffs, screenshots, reasoning traces. Everything that happened, documented.
+						</p>
+					</div>
+
+					<div class="card-base p-6">
+						<div class="text-sm font-medium text-accent-600 mb-2">Step 6</div>
+						<h3 class="text-xl font-semibold text-ink mb-2">Learning</h3>
+						<p class="text-neutral-600 text-sm">
+							Review to prune/extend and update. The system improves through use.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Glass Box AI -->
+			<div class="card-base p-8 lg:p-12 mb-12 bg-neutral-50 off-kilter-neg-0-5">
+				<h2 class="text-2xl font-bold text-ink mb-6">Glass Box AI</h2>
+				<p class="text-lg text-neutral-600 mb-8">
+					We build systems where the reasoning is visible, not just the output.
+				</p>
+
+				<div class="grid md:grid-cols-2 gap-6 mb-8">
+					<div class="flex items-start gap-3">
+						<svg class="w-6 h-6 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+						</svg>
+						<div>
+							<h3 class="font-semibold text-ink mb-1">Visible procedures</h3>
+							<p class="text-sm text-neutral-600">You can see which procedure was called and why</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-3">
+						<svg class="w-6 h-6 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+						</svg>
+						<div>
+							<h3 class="font-semibold text-ink mb-1">Surfaced errors</h3>
+							<p class="text-sm text-neutral-600">Error states are surfaced, not hidden</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-3">
+						<svg class="w-6 h-6 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+						</svg>
+						<div>
+							<h3 class="font-semibold text-ink mb-1">Human oversight</h3>
+							<p class="text-sm text-neutral-600">Human oversight is built into the loop</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-3">
+						<svg class="w-6 h-6 text-secondary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+						</svg>
+						<div>
+							<h3 class="font-semibold text-ink mb-1">Audit trails</h3>
+							<p class="text-sm text-neutral-600">Audit trails exist for compliance</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-6 rounded-xl border border-neutral-200">
+					<p class="text-neutral-700">
+						The opposite—<strong class="text-ink">black box AI</strong>—might work for low-stakes applications. For accessibility, legal compliance, or anywhere correctness matters, you need glass box.
+					</p>
+				</div>
+			</div>
+
+			<!-- What This Means for You -->
+			<div class="card-base p-8 lg:p-12 mb-12 off-kilter-0-5">
+				<h2 class="text-2xl font-bold text-ink mb-6">What This Means for You</h2>
+				<div class="grid md:grid-cols-2 gap-6">
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-1">Agents that work</h3>
+							<p class="text-neutral-600">Systems that actually accomplish what you need, reliably.</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-1">Reasoning you can audit</h3>
+							<p class="text-neutral-600">Understand why decisions were made, not just what happened.</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-1">Procedures you own</h3>
+							<p class="text-neutral-600">Portable, governed, improvable. No vendor lock-in.</p>
+						</div>
+					</div>
+					<div class="flex items-start gap-4">
+						<div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+							<svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-ink mb-1">Independence over time</h3>
+							<p class="text-neutral-600">Built for you to own and extend. No ongoing dependency required.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="text-center py-12 border-t border-neutral-200">
+				<h2 class="text-2xl font-bold text-ink mb-4">
+					Ready to see this in action?
+				</h2>
+				<p class="text-lg text-neutral-600 mb-8">
+					Explore our service offerings to find the right engagement model for your needs.
+				</p>
+				<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
+					See Our Services
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

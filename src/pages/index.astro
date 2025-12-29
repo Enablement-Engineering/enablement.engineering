@@ -1,99 +1,144 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Button } from '../components/ui/button';
-import { LogoWide, SloppySun } from '../components/Logo';
+import { LogoWide } from '../components/Logo';
 ---
 
-<Layout title="Enablement Engineering" description="Building capabilities through technology and learning">
+<Layout title="Enablement Engineering | Dylan Isaac" description="AI systems that extend human capability. I build agentic systems your team can trust.">
 	<!-- Hero Section -->
-		<section class="py-20 lg:py-32">
-			<div class="flex flex-col items-center text-center space-y-8">
-				<div class="relative">
-					<LogoWide
-						className="w-full max-w-2xl h-auto"
-						sunVariant="circle"
-						sunColor="#FFD60A"
-						textColor="#0B0E14"
-						ladderColor="#0B0E14"
-						animateSun={true}
-						defaultBounce={true}
-						hoverMorph={true}
-						client:load
-					/>
-				</div>
-				<div class="max-w-4xl space-y-6">
-					<h1 class="text-5xl lg:text-7xl font-bold text-ink leading-tight">
-						Build ladders, not walls
-					</h1>
-					<p class="text-xl lg:text-2xl text-neutral-700 leading-relaxed">
-						We specialize in creating systems and processes that enable teams to achieve their full potential through strategic technology implementation.
-					</p>
-				</div>
-				<div class="flex flex-col sm:flex-row gap-4">
-					<a href="/about" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary-400 text-secondary-900 hover:bg-primary-300 h-11 px-8 no-underline">
-						Learn More About Us
-					</a>
-					<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary-900 text-neutral-50 hover:bg-secondary-800 h-11 px-8 no-underline">
-						Get Started
-					</a>
-				</div>
+	<section class="py-16 lg:py-24">
+		<div class="flex flex-col items-center text-center space-y-8">
+			<div class="relative">
+				<LogoWide
+					className="w-full max-w-xl h-auto"
+					sunVariant="circle"
+					sunColor="#FFD60A"
+					textColor="#0B0E14"
+					ladderColor="#0B0E14"
+					animateSun={true}
+					defaultBounce={true}
+					hoverMorph={true}
+					client:load
+				/>
 			</div>
-		</section>
-
-		<!-- Services Section -->
-		<section class="py-20">
-			<div class="text-center mb-16">
-				<h2 class="text-4xl lg:text-5xl font-bold text-ink mb-6">What We Offer</h2>
-				<p class="text-xl text-neutral-600 max-w-2xl mx-auto">
-					Our expertise spans multiple domains, always with the goal of enabling others to be more effective and productive.
-				</p>
+			<div class="max-w-4xl space-y-6">
+				<h1 class="text-4xl lg:text-6xl font-bold text-ink leading-tight">
+					AI systems that extend human capability.
+				</h1>
 			</div>
-
-			<div class="service-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<div class="service-card card-base p-8 hover:shadow-lg transition-shadow off-kilter-1">
-					<div class="service-icon w-12 h-12 bg-primary-100 flex items-center justify-center mb-6">
-						<div class="w-6 h-6 bg-primary-400"></div>
-					</div>
-					<h3 class="text-2xl font-semibold text-ink mb-4">Technology Solutions</h3>
-					<p class="text-neutral-600 leading-relaxed">
-						Custom software development and system integration to solve complex business challenges with scalable, maintainable solutions.
-					</p>
-				</div>
-
-				<div class="service-card card-base p-8 hover:shadow-lg transition-shadow">
-					<div class="service-icon w-12 h-12 bg-accent-100 flex items-center justify-center mb-6">
-						<div class="w-6 h-6 bg-accent-500"></div>
-					</div>
-					<h3 class="text-2xl font-semibold text-ink mb-4">Process Optimization</h3>
-					<p class="text-neutral-600 leading-relaxed">
-						Streamlining workflows and automating repetitive tasks to increase efficiency while maintaining quality and consistency.
-					</p>
-				</div>
-
-				<div class="service-card card-base p-8 hover:shadow-lg transition-shadow off-kilter-neg-1">
-					<div class="service-icon w-12 h-12 bg-secondary-100 flex items-center justify-center mb-6">
-						<div class="w-6 h-6 bg-secondary-600"></div>
-					</div>
-					<h3 class="text-2xl font-semibold text-ink mb-4">Knowledge Systems</h3>
-					<p class="text-neutral-600 leading-relaxed">
-						Building platforms that capture, organize, and share organizational knowledge to accelerate learning and decision-making.
-					</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- Call to Action -->
-		<section class="py-20 text-center bg-neutral-50 rounded-2xl off-kilter-0-5">
-			<div class="max-w-3xl mx-auto space-y-6">
-				<h2 class="text-3xl lg:text-4xl font-bold text-ink">
-					Ready to unlock your team's potential?
-				</h2>
-				<p class="text-xl text-neutral-600">
-					Let's discuss how we can help you build the capabilities your organization needs to thrive.
-				</p>
-				<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
-					Start the Conversation
+			<div class="pt-4">
+				<a href="/approach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
+					Our Approach
 				</a>
 			</div>
-		</section>
+		</div>
+	</section>
+
+	<!-- Trusted By Section -->
+	<section class="py-8 border-t border-neutral-200">
+		<p class="text-center text-sm text-neutral-500 mb-6">Currently working with</p>
+		<div class="flex justify-center items-center">
+			<img src="/images/clients/uic-logo.svg" alt="University of Illinois Chicago" class="h-10 opacity-60 hover:opacity-100 transition-opacity" />
+		</div>
+	</section>
+
+	<!-- What I Build -->
+	<section class="py-20">
+		<div class="text-center mb-16">
+			<h2 class="text-3xl lg:text-4xl font-bold text-ink mb-4">What I Build</h2>
+			<p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+				Agentic systems with <a href="/definitions/glass-box" class="text-link-600 hover:underline">glass-box</a> architecture—every decision reviewable, every procedure owned by you.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div class="card-base p-8 hover:shadow-lg transition-shadow off-kilter-1">
+				<div class="w-12 h-12 bg-primary-100 flex items-center justify-center mb-6 rounded-lg">
+					<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+					</svg>
+				</div>
+				<h3 class="text-2xl font-semibold text-ink mb-4">Agent Discovery Sprint</h3>
+				<p class="text-neutral-600 leading-relaxed mb-4">
+					Find out what your agents could do. A 2-week sprint to audit workflows, propose architecture, and deliver a working prototype.
+				</p>
+				<p class="text-sm text-neutral-500 italic">
+					For organizations ready to explore.
+				</p>
+			</div>
+
+			<div class="card-base p-8 hover:shadow-lg transition-shadow">
+				<div class="w-12 h-12 bg-accent-100 flex items-center justify-center mb-6 rounded-lg">
+					<svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+					</svg>
+				</div>
+				<h3 class="text-2xl font-semibold text-ink mb-4">Custom Agent Build</h3>
+				<p class="text-neutral-600 leading-relaxed mb-4">
+					Ship production agentic systems with procedures you own. 3-5 narrow agents, orchestration layer, and full knowledge transfer.
+				</p>
+				<p class="text-sm text-neutral-500 italic">
+					For teams ready to deploy.
+				</p>
+			</div>
+
+			<div class="card-base p-8 hover:shadow-lg transition-shadow off-kilter-neg-1">
+				<div class="w-12 h-12 bg-secondary-100 flex items-center justify-center mb-6 rounded-lg">
+					<svg class="w-6 h-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+					</svg>
+				</div>
+				<h3 class="text-2xl font-semibold text-ink mb-4">Agentic Infrastructure Partnership</h3>
+				<p class="text-neutral-600 leading-relaxed mb-4">
+					Ongoing agent engineering capability. Continuous development, optimization, and team training.
+				</p>
+				<p class="text-sm text-neutral-500 italic">
+					For organizations scaling AI as core infrastructure.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Featured Work -->
+	<section class="py-20 border-t border-neutral-200">
+		<div class="text-center mb-12">
+			<h2 class="text-3xl lg:text-4xl font-bold text-ink mb-4">Featured Work</h2>
+		</div>
+
+		<div class="max-w-3xl mx-auto">
+			<a href="/work/uic-equalify" class="block card-base p-8 hover:shadow-lg transition-shadow group">
+				<p class="text-sm uppercase tracking-wider text-neutral-500 font-medium mb-2">
+					University of Illinois Chicago — Digital Accessibility Services
+				</p>
+				<h3 class="text-2xl lg:text-3xl font-semibold text-ink mb-4 group-hover:text-accent-600 transition-colors">
+					Escaping to Semantic Freedom
+				</h3>
+				<p class="text-lg text-neutral-600 leading-relaxed mb-4">
+					Transforming inaccessible academic PDFs into adaptive, semantic web experiences at scale.
+				</p>
+				<span class="text-link-600 font-medium group-hover:text-link-700 transition-colors">
+					Read case study →
+				</span>
+			</a>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="py-20 text-center">
+		<div class="max-w-3xl mx-auto space-y-6">
+			<h2 class="text-3xl lg:text-4xl font-bold text-ink">
+				Ready to build agents you can trust?
+			</h2>
+			<div class="pt-4">
+				<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent-500 text-white hover:bg-accent-600 h-12 px-10 no-underline">
+					Book a discovery call
+				</a>
+				<div class="mt-4">
+					<a href="/services" class="text-lg text-link-600 hover:text-link-700 font-medium">
+						View services
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>
