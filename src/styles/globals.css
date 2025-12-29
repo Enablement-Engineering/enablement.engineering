@@ -559,12 +559,20 @@
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
+  /* Sun morph on hover - base transition for hover morph feature
+   * Note: Full circle-to-sloppy morph implementation is WIP due to
+   * SVG transform origin conflicts. Currently provides smooth transition. */
+  .sun-morph-on-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   /* Performance optimization for reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .sun-morphing,
     .sun-hover-pulse,
     .sun-hover-rotate,
     .sun-hover-morph,
+    .sun-morph-on-hover,
     .sun-switching,
     .sun-fade-enter,
     .sun-fade-enter-active,
@@ -577,61 +585,3 @@
     }
   }
 }
-
-  /* Sun morphing on hover - combines bounce and spin */
-  .sun-morph-on-hover {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-
-  /* Enhanced bounce animation that works with morphing */
-  .sun-bounce-default {
-    animation: bounceGentle 3s infinite;
-  }
-
-  /* Logo-wide hover effect for sun morphing */
-  .logo-morph-hover:hover .sun-morph-on-hover {
-    animation: bounceGentle 3s infinite, sunRotate 3s linear infinite;
-  }
-
-  /* TODO: Sun morph hover effects - commented out for now
-   * Complete hover morph system from circle to sloppy sun with animations
-   *
-   * Goals:
-   *   - Smooth opacity transition between circle and sloppy variants
-   *   - Scale sloppy sun to 1.25x from center on hover
-   *   - Add slow continuous rotation to sloppy sun while hovered
-   *
-   * Technical challenges:
-   *   - Transform conflicts between inline positioning, CSS hover, and animations
-   *   - SVG coordinate system complications with scaling/transform-origin
-   *   - Multiple transform properties competing for same element
-   *
-   * Current working state: Simple circle sun with gentle bounce animation
-   *
-   * Potential approaches for future implementation:
-   *   1. Use CSS custom properties to compose transforms dynamically
-   *   2. Restructure SVG hierarchy to separate positioning from animation
-   *   3. Apply transforms to different nested elements (wrapper vs inner)
-   *   4. Investigate CSS transform-style: preserve-3d for layered transforms
-   */
-
-  /* .sun-morph-on-hover .sun-circle {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .sun-morph-on-hover .sun-sloppy {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .sun-morph-on-hover:hover .sun-circle {
-    opacity: 0;
-  }
-
-  .sun-morph-on-hover:hover .sun-sloppy {
-    opacity: 1;
-    animation: slowRotation 6s linear infinite;
-  } */
-
