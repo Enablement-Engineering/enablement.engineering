@@ -2,8 +2,14 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
+import parchmentTheme from './src/themes/parchment-light.json';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
+  markdown: {
+    shikiConfig: {
+      theme: parchmentTheme,
+    },
+  },
 });

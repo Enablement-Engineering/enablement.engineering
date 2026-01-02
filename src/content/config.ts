@@ -46,8 +46,23 @@ const definitions = defineCollection({
   }),
 });
 
+// Ladders collection for practical tools/patterns
+const ladders = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    capabilities: z.array(z.string()),
+    featured: z.boolean().default(false),
+    tags: z.array(z.string()).default([]),
+    publishedAt: z.date(),
+    updatedAt: z.date().optional(),
+  }),
+});
+
 export const collections = {
   work,
   writing,
   definitions,
+  ladders,
 };

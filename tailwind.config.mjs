@@ -15,26 +15,26 @@ export default {
           300: '#ffd149',
           400: '#ffd60a', // Primary yellow - your main brand color
           500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
-          950: '#451a03',
+          600: '#92400e', // FIXED: ~5.5:1 contrast on paper (was #d97706 ~2.9:1)
+          700: '#78350f', // Shifted darker for gradient
+          800: '#5c2a0c',
+          900: '#451a03',
+          950: '#2d1102',
           DEFAULT: '#ffd60a',
           foreground: '#0b0e14',
         },
         // Orange as Accent
         accent: {
           50: '#fef6ee',
-          100: '#fdecd7',
+          100: '#fff4eb', // FIXED: Lightened for better contrast with 700
           200: '#fad5ae',
           300: '#f6b67a',
           400: '#f18b44',
           500: '#f97316', // Orange accent
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
+          600: '#9a3412', // FIXED: ~5.5:1 on paper (was #ea580c ~3.27:1)
+          700: '#7c2d12', // Shifted darker for gradient
+          800: '#6b2610',
+          900: '#5a1f0e',
           950: '#431407',
           DEFAULT: '#f97316',
           foreground: '#ffffff',
@@ -44,8 +44,8 @@ export default {
           50: '#f7f5f2',
           100: '#ede8e1',
           200: '#ddd4c5',
-          300: '#a08660',
-          400: '#654e3d',
+          300: '#6b5c4d', // FIXED: ~4.8:1 contrast (was #a08660)
+          400: '#4a3f35', // FIXED: higher contrast (was #654e3d)
           500: '#3a3a3a',
           600: '#2a2a2a',
           700: '#1a1a1a',
@@ -97,17 +97,18 @@ export default {
         },
 
         // Neutral scale based on parchment
+        // WCAG AA compliant: 500+ colors have 4.5:1+ contrast on #f7f5f2
         neutral: {
           50: '#f7f5f2', // Parchment
           100: '#ede8e1',
           200: '#ddd4c5',
-          300: '#c7b99e',
-          400: '#b29d7a',
-          500: '#a08660',
-          600: '#937354',
-          700: '#7a5e46',
-          800: '#654e3d',
-          900: '#544235',
+          300: '#bfb19a', // Adjusted for smoother gradient
+          400: '#8f7d68', // Adjusted: ~4.0:1 (decorative use only)
+          500: '#6b5c4d', // FIXED: ~4.8:1 contrast (was #a08660 ~3.17:1)
+          600: '#5a4d40', // FIXED: ~5.8:1 contrast (was #937354 ~4.0:1)
+          700: '#4a3f35', // Adjusted for gradient
+          800: '#3a322b', // Adjusted for gradient
+          900: '#2a2521',
           950: '#0b0e14', // Ink
         },
       },

@@ -1,0 +1,254 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all resources
+const definitions = await getCollection('definitions');
+const ladders = await getCollection('ladders');
+
+// Sort definitions alphabetically by term
+const sortedDefinitions = definitions.sort((a, b) =>
+	a.data.term.localeCompare(b.data.term)
+);
+
+// Sort ladders: featured first, then by publishedAt
+const sortedLadders = ladders.sort((a, b) => {
+	if (a.data.featured && !b.data.featured) return -1;
+	if (!a.data.featured && b.data.featured) return 1;
+	return b.data.publishedAt.getTime() - a.data.publishedAt.getTime();
+});
+
+// Create unified resource list with type information
+type ResourceItem = {
+	type: 'definition' | 'ladder';
+	slug: string;
+	title: string;
+	description: string;
+	featured?: boolean;
+	capabilities?: string[];
+	sortOrder: number;
+};
+
+const resources: ResourceItem[] = [
+	// Featured ladders first
+	...sortedLadders
+		.filter(l => l.data.featured)
+		.map((ladder, i) => ({
+			type: 'ladder' as const,
+			slug: ladder.slug,
+			title: ladder.data.title,
+			description: ladder.data.description,
+			featured: true,
+			capabilities: ladder.data.capabilities,
+			sortOrder: i,
+		})),
+	// Non-featured ladders
+	...sortedLadders
+		.filter(l => !l.data.featured)
+		.map((ladder, i) => ({
+			type: 'ladder' as const,
+			slug: ladder.slug,
+			title: ladder.data.title,
+			description: ladder.data.description,
+			featured: false,
+			capabilities: ladder.data.capabilities,
+			sortOrder: 100 + i,
+		})),
+	// Definitions
+	...sortedDefinitions.map((def, i) => ({
+		type: 'definition' as const,
+		slug: def.slug,
+		title: def.data.term,
+		description: def.data.shortDefinition,
+		sortOrder: 200 + i,
+	})),
+];
+---
+
+<Layout title="Resources | Enablement Engineering" description="Definitions, patterns, and tools that encode expertise into reusable knowledge for building AI-enabled organizations.">
+	<section class="py-16 lg:py-24">
+		<div class="max-w-4xl mx-auto">
+			<!-- Header -->
+			<div class="text-center mb-12">
+				<h1 class="text-4xl lg:text-5xl font-bold text-ink mb-6">
+					Resources
+				</h1>
+				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+					Definitions, patterns, and tools that encode expertise into reusable knowledge. 
+					Building blocks for understanding and implementing enablement engineering.
+				</p>
+			</div>
+
+			<!-- Filter Tabs -->
+			<div class="flex justify-center mb-12">
+				<div class="inline-flex bg-neutral-100 rounded-lg p-1" role="tablist" aria-label="Filter resources by type">
+					<button
+						type="button"
+						role="tab"
+						aria-selected="true"
+						data-filter="all"
+						class="filter-tab px-4 py-2 text-sm font-medium rounded-md transition-colors bg-white text-ink shadow-sm"
+					>
+						All Types
+					</button>
+					<button
+						type="button"
+						role="tab"
+						aria-selected="false"
+						data-filter="definition"
+						class="filter-tab px-4 py-2 text-sm font-medium rounded-md transition-colors text-neutral-600 hover:text-ink"
+					>
+						Definitions
+					</button>
+					<button
+						type="button"
+						role="tab"
+						aria-selected="false"
+						data-filter="ladder"
+						class="filter-tab px-4 py-2 text-sm font-medium rounded-md transition-colors text-neutral-600 hover:text-ink"
+					>
+						Ladders
+					</button>
+				</div>
+			</div>
+
+			<!-- Resources Grid -->
+			<div class="space-y-6" id="resources-grid">
+				{resources.length === 0 ? (
+					<div class="text-center py-12">
+						<p class="text-neutral-500 text-lg">Resources coming soon.</p>
+					</div>
+				) : (
+					resources.map((resource) => (
+						<a
+							href={resource.type === 'definition' ? `/definitions/${resource.slug}` : `/ladders/${resource.slug}`}
+							class="resource-card block group"
+							data-type={resource.type}
+						>
+							<article class={`card-base p-6 lg:p-8 hover:shadow-lg transition-all ${resource.type === 'ladder' && resource.featured ? 'border-l-4 border-l-primary-400' : ''}`}>
+								<div class="flex flex-col gap-4">
+									{/* Type Badge + Featured indicator */}
+									<div class="flex items-center gap-2">
+										{resource.type === 'definition' ? (
+											<span class="inline-block px-2.5 py-0.5 text-xs font-medium rounded-full bg-secondary-100 text-secondary-700">
+												Definition
+											</span>
+										) : (
+											<span class="inline-block px-2.5 py-0.5 text-xs font-medium rounded-full bg-primary-100 text-primary-700">
+												Ladder
+											</span>
+										)}
+										{resource.featured && (
+											<span class="inline-block px-2.5 py-0.5 text-xs font-medium rounded-full bg-accent-100 text-accent-700">
+												Featured
+											</span>
+										)}
+									</div>
+
+									{/* Title */}
+									<h2 class={`text-xl lg:text-2xl font-semibold text-ink group-hover:text-primary-600 transition-colors ${resource.type === 'definition' ? 'font-mono' : ''}`}>
+										{resource.title}
+									</h2>
+
+									{/* Description */}
+									<p class="text-neutral-600 leading-relaxed">
+										{resource.description}
+									</p>
+
+									{/* Capabilities (ladders only) */}
+									{resource.type === 'ladder' && resource.capabilities && resource.capabilities.length > 0 && (
+										<div class="mt-2">
+											<p class="text-xs font-medium text-neutral-500 uppercase tracking-wide mb-2">Capabilities</p>
+											<ul class="flex flex-wrap gap-2">
+												{resource.capabilities.slice(0, 4).map((cap) => (
+													<li class="px-2.5 py-1 bg-neutral-100 text-neutral-700 text-sm rounded">
+														{cap}
+													</li>
+												))}
+												{resource.capabilities.length > 4 && (
+													<li class="px-2.5 py-1 text-neutral-500 text-sm">
+														+{resource.capabilities.length - 4} more
+													</li>
+												)}
+											</ul>
+										</div>
+									)}
+								</div>
+							</article>
+						</a>
+					))
+				)}
+			</div>
+
+			<!-- Empty State for Filtered Results -->
+			<div id="empty-state" class="hidden text-center py-12">
+				<p class="text-neutral-500 text-lg">No resources found for this filter.</p>
+			</div>
+
+			<!-- CTA -->
+			<div class="mt-16 p-8 bg-neutral-50 rounded-2xl text-center off-kilter-0-5">
+				<h2 class="text-2xl font-bold text-ink mb-4">
+					Building something with these patterns?
+				</h2>
+				<p class="text-lg text-neutral-600 mb-6">
+					Let's talk about how enablement engineering can work for your organization.
+				</p>
+				<div class="flex flex-col sm:flex-row justify-center gap-4">
+					<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg font-semibold bg-primary-400 text-secondary-900 hover:bg-primary-300 h-11 px-6 no-underline text-sm">
+						View Services
+					</a>
+					<a href="/contact" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg font-semibold bg-secondary-900 text-neutral-50 hover:bg-secondary-800 h-11 px-6 no-underline text-sm">
+						Get in Touch
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	// Filter functionality
+	const filterTabs = document.querySelectorAll('.filter-tab');
+	const resourceCards = document.querySelectorAll('.resource-card');
+	const emptyState = document.getElementById('empty-state');
+	const resourcesGrid = document.getElementById('resources-grid');
+
+	filterTabs.forEach(tab => {
+		tab.addEventListener('click', () => {
+			const filter = tab.getAttribute('data-filter');
+
+			// Update tab styles
+			filterTabs.forEach(t => {
+				t.classList.remove('bg-white', 'text-ink', 'shadow-sm');
+				t.classList.add('text-neutral-600');
+				t.setAttribute('aria-selected', 'false');
+			});
+			tab.classList.add('bg-white', 'text-ink', 'shadow-sm');
+			tab.classList.remove('text-neutral-600');
+			tab.setAttribute('aria-selected', 'true');
+
+			// Filter cards
+			let visibleCount = 0;
+			resourceCards.forEach(card => {
+				const cardType = card.getAttribute('data-type');
+				if (filter === 'all' || cardType === filter) {
+					(card as HTMLElement).style.display = 'block';
+					visibleCount++;
+				} else {
+					(card as HTMLElement).style.display = 'none';
+				}
+			});
+
+			// Show/hide empty state
+			if (emptyState && resourcesGrid) {
+				if (visibleCount === 0) {
+					emptyState.classList.remove('hidden');
+					resourcesGrid.classList.add('hidden');
+				} else {
+					emptyState.classList.add('hidden');
+					resourcesGrid.classList.remove('hidden');
+				}
+			}
+		});
+	});
+</script>

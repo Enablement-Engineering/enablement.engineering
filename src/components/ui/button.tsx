@@ -13,7 +13,7 @@ const buttonVariants = cva(
         // Secondary: Ink/Black for supporting actions
         secondary: "bg-secondary-900 text-neutral-50 hover:bg-secondary-800",
         // Accent: Orange for highlights/call-to-action
-        accent: "bg-accent-500 text-white hover:bg-accent-600",
+        accent: "bg-accent-500 text-secondary-900 hover:bg-accent-600",
         // Destructive: Standard red for destructive actions
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         // Outline: Ink outline on paper background
