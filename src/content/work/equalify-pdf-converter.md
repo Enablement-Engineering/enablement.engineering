@@ -1,11 +1,12 @@
 ---
-title: "Escaping to Semantic Freedom"
+title: "Equalify PDF to Semantic Markup Converter"
 client: "University of Illinois Chicago"
 description: "Transforming inaccessible academic PDFs into adaptive, semantic web experiences at scale."
 engagement: "build"
 duration: "Ongoing (beta release January 2026)"
 featured: true
 publishedAt: 2024-09-01
+modifiedAt: 2026-01-02
 tags: ["accessibility", "multi-agent", "ai-orchestration", "higher-education", "pdf-transformation"]
 results:
   - metric: "Cost reduction target"
@@ -77,4 +78,4 @@ The pipeline is architected to become a packageable skill — a trusted procedur
 
 ## Speaking
 
-Presenting this work at **CSUN Assistive Technology Conference 2025**: "Escaping to Semantic Freedom"
+Presenting this work at **CSUN Assistive Technology Conference 2026**: "Escaping to Semantic Freedom"
