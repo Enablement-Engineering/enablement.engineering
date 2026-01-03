@@ -1,6 +1,7 @@
 export const navigationItems = [
   { href: '/writing', label: 'Writing' },
   { href: '/work', label: 'Projects' },
+  { href: '/services', label: 'Services' },
   { href: '/resources', label: 'Resources' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' }
