@@ -4,7 +4,7 @@ description: An AI-powered pattern that extracts author intention from page cont
 capabilities:
   - Extracts author intention from page structure and context
   - Classifies images as decorative, simple informative, or complex informative
-  - Generates contextually appropriate alt text within 150 character limit
+  - Generates contextually appropriate alt text optimized for brevity
   - Creates structured alternatives for complex data visualizations
   - Performs epistemological translation between visual and non-visual modalities
   - Includes both comprehensive prompts and prompt chains for different model sizes
@@ -15,21 +15,14 @@ tags:
   - alt-text
   - context-engineering
 publishedAt: 2025-03-01
+modifiedAt: 2026-01-02
 ---
 
-This is my methodology for creating alt text, encoded as a ladder you can climb. After years as an accessibility expert, I've mapped the line of questioning I use when writing alt text into prompts that extract author intention from page structure—the implicit human variables that were previously locked behind expert judgment.
+This is my methodology for creating alt text, encoded as a [ladder](/definitions/building-ladders)—expert knowledge turned into a tool anyone can use. After years as an accessibility expert, I've mapped the line of questioning I use when writing alt text into prompts that extract author intention from page structure—the implicit human variables that were previously locked behind expert judgment.
 
-**How this is different:** Traditional alt text generators analyze only the image pixels. This pattern analyzes the entire page context first, then the image. It uses the same questioning process I use: What's the page purpose? Why is this image here? What would someone miss without it? Which of the metaphorical "1000 words" an image contains should actually be in the alt text?
+**How this is different:** Traditional alt text generators analyze only the image pixels. This pattern analyzes the entire page context first, then the image. It uses the same questioning process I use: *What's the page purpose? Why is this image here? What would someone miss without it? Which of the metaphorical "1000 words" an image contains should actually be in the alt text?*
 
 The same photo needs completely different descriptions on a product page (focus on features), news article (focus on context), or portfolio (focus on technique). By extracting context from DOM structure, headings, and surrounding text, this pattern identifies which description serves the author's intent.
-
-## Prior Art: Context Engineering Before It Had a Name
-
-This pattern predates the "[context engineering](/definitions/context-engineering)" buzzword that emerged in 2025. Before Tobi Lütke's tweets, before Karpathy's threads—this was already my approach to AI implementation.
-
-The insight wasn't "use AI to write alt text." It was: **the AI needs to know what humans know about the image's context**—what section it appears in, what the surrounding copy discusses, what the author intended it to convey.
-
-That's context engineering. I was doing it before we had the name.
 
 ## How Expert Questioning Becomes Automated Analysis
 
@@ -81,21 +74,32 @@ Examine immediate text context, visual prominence, and placement to determine wh
 Apply systematic classification:
 
 - **Decorative**: No unique information → Empty alt text
-- **Simple Informative**: Essential info in ≤150 characters
-- **Complex Informative**: Data/relationships → Alt text + structured alternative
+- **Functional**: Buttons, links, controls → Alt text describes the action ("Submit form", "Download PDF")
+- **Text Image**: Image contains text → Alt text includes the text content
+- **Simple Informative**: Essential info that can be conveyed concisely
+- **Complex Informative**: Data/relationships → Alt text summary + structured alternative (table, list)
 
 ### Step 4: Generate Optimized Alt Text
 
 Create functional descriptions that serve as true text alternatives:
 
-- **Character limit**: Maximum 150 characters (users can't navigate within alt text like regular text)
+- **Keep it concise**: Aim for brevity—screen reader users can't skim or navigate within alt text like regular text. Most descriptions work well under ~150-250 characters.
 - **Lead with purpose**: Convey function and meaning, not visual appearance
 - **Serve author's intent**: What would someone miss without this image?
 - **Avoid redundancy**: Never include "image of", "picture of", or "graphic of"—screen readers already announce the image role
 
 ### Step 5: Validate for Screen Reader UX
 
-Confirm output serves sequential, non-visual navigation needs. For complex visuals, provide structured alternatives (tables/lists) for data exploration.
+Run through these checks before finalizing:
+
+- **Classification match**: Does the alt text format match the image type? (Empty for decorative, action for functional, etc.)
+- **No redundancy**: Does it repeat information already in adjacent text or captions?
+- **No hallucination**: Does it only describe what's actually visible or supported by page context?
+- **No filler phrases**: No "image of", "picture showing", "graphic depicting"
+- **Serves the page purpose**: Would a screen reader user get the same takeaway as a sighted user?
+- **Appropriate length**: Concise enough to not overwhelm, detailed enough to not omit essentials
+
+For complex visuals, confirm the structured alternative (table/list) is provided alongside the summary alt text.
 
 ## Good Alt Text vs Bad Alt Text
 
@@ -103,15 +107,13 @@ Confirm output serves sequential, non-visual navigation needs. For complex visua
 
 **Good:** "Quarterly sales up 40%, mobile revenue leading growth"
 
-The difference: Lead with meaning, not appearance. Every word earns its place within the 150-character cognitive load limit.
+The difference: Lead with meaning, not appearance. Every word should earn its place.
 
 ---
 
 ## The Prompts
 
 I've encoded my methodology into two formats:
-
-> Note: Do **not** use a reasoning model for these prompts. Step by step reasoning instructions for reasoning models causes them to overthink.
 
 ### Option 1: Comprehensive Prompt (for Claude, ChatGPT, Gemini)
 
@@ -160,12 +162,12 @@ Instructions:
 
 3. Classify the image as DECORATIVE, SIMPLE_INFORMATIVE, or COMPLEX_INFORMATIVE using the provided explicit criteria:
    - **DECORATIVE**: Purely aesthetic or redundant with text, no information lost if removed
-   - **SIMPLE_INFORMATIVE**: Conveys specific, essential information in ≤150 characters
+   - **SIMPLE_INFORMATIVE**: Conveys specific, essential information in ≤250 characters
    - **COMPLEX_INFORMATIVE**: Contains data, relationships, or processes requiring structured alternative
 
 4. Generate alt text and rationale according to classification:
    - For **DECORATIVE**: alt_text = ""
-   - For **SIMPLE_INFORMATIVE**: Alt description ≤150 characters
+   - For **SIMPLE_INFORMATIVE**: Alt description ≤250 characters
    - For **COMPLEX_INFORMATIVE**: Concise summary plus "Full data table follows." and structured alternative (markdown table, list, or detailed breakdown)
    - For **insufficient context**: Output error in all required fields, classification = "UNDETERMINED"
 
@@ -252,7 +254,7 @@ ROLE: Accessibility expert determining image classification.
 
 DEFINITIONS:
 - DECORATIVE: Image adds no information beyond what text already provides
-- SIMPLE_INFORMATIVE: Image conveys essential info that fits in 150 characters
+- SIMPLE_INFORMATIVE: Image conveys essential info that fits in 250 characters
 - COMPLEX_INFORMATIVE: Image contains data/relationships requiring detailed description
 
 INPUTS from previous steps:
@@ -264,7 +266,7 @@ DECISION TREE:
    NO + text explains it = DECORATIVE
    YES → Continue
 
-2. Can essential info fit in 150 characters?
+2. Can essential info fit in 250 characters?
    YES = SIMPLE_INFORMATIVE
    NO = COMPLEX_INFORMATIVE
 
@@ -287,7 +289,7 @@ INPUTS:
 
 RULES:
 - DECORATIVE → alt=""
-- SIMPLE_INFORMATIVE → Description ≤150 characters, lead with meaning not appearance
+- SIMPLE_INFORMATIVE → Description ≤250 characters, lead with meaning not appearance
 - COMPLEX_INFORMATIVE → Brief summary + "Full data table follows"
 
 OUTPUT:
@@ -496,8 +498,6 @@ function extractPageContext() {
 
 ## Why This Is a Ladder
 
-This pattern encodes expert knowledge into rungs others can climb.
+This pattern makes expert-level alt text accessible to anyone with access to an LLM.
 
-Instead of forcing creators to learn accessibility guidelines, it meets them where they are—letting them express through visual design while the ladder translates their intent into equivalent non-visual experiences. Each step is a rung: understanding context, recognizing patterns, making classification decisions, applying UX constraints.
-
-The result: My years of accessibility expertise become a tool anyone can use. Technology adapts to humans, not the other way around.
+The methodology doesn't require learning WCAG guidelines or understanding screen reader behavior. Each step handles one decision: extract context, analyze visuals, classify function, generate description, validate output. The expertise is encoded in the process, not assumed in the user.

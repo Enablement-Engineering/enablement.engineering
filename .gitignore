@@ -26,3 +26,14 @@ pnpm-debug.log*
 # Project-specific files
 playwright-report/
 test-results/
+
+# Local testing artifacts
+.playwright-mcp/
+.testing/
+
+# Private content
+obsidian-vault/
+docs/planning/
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json

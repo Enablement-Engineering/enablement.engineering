@@ -2,6 +2,7 @@
 title: "Reframing Accessibility: AI as an Epistemological Translator"
 description: "Accessibility isn't about compliance—it's about translating between fundamentally different ways of knowing. AI changes what's possible."
 publishedAt: 2024-09-01
+modifiedAt: 2026-01-02
 type: "essay"
 featured: true
 tags: ["accessibility", "ai", "epistemology", "translation"]

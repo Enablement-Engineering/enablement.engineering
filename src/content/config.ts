@@ -12,6 +12,7 @@ const work = defineCollection({
     status: z.enum(['completed', 'ongoing', 'upcoming']).optional(),
     featured: z.boolean().default(false),
     publishedAt: z.date(),
+    modifiedAt: z.date().optional(),
     tags: z.array(z.string()).default([]),
     results: z.array(z.object({
       metric: z.string(),
@@ -27,7 +28,7 @@ const writing = defineCollection({
     title: z.string(),
     description: z.string(),
     publishedAt: z.date(),
-    updatedAt: z.date().optional(),
+    modifiedAt: z.date().optional(),
     type: z.enum(['essay', 'case-study', 'prompt-lab', 'note']),
     featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
@@ -56,7 +57,7 @@ const ladders = defineCollection({
     featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     publishedAt: z.date(),
-    updatedAt: z.date().optional(),
+    modifiedAt: z.date().optional(),
   }),
 });
 

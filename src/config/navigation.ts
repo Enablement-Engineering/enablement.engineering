@@ -2,7 +2,8 @@ export const navigationItems = [
   { href: '/writing', label: 'Writing' },
   { href: '/work', label: 'Projects' },
   { href: '/resources', label: 'Resources' },
-  { href: '/about', label: 'About' }
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' }
 ];
 
 export const ctaButtons = {

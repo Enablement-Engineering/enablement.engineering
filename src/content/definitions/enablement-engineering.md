@@ -36,7 +36,7 @@ Humans and agents act together. The key word is "together"—enablement systems 
 Every action produces artifacts: logs, diffs, screenshots, reasoning traces. Evidence isn't optional metadata—it's the foundation of trust. In domains where trust isn't a feeling but documentation, evidence is the product.
 
 ### 6. Learning
-Review outcomes to prune what doesn't work, extend what does, and update the system. Learning closes the loop, feeding execution results back into better intent capture and translation.
+Review outcomes to prune what doesn't work, extend what does, and update the system. This means running retrospectives, updating playbooks, extracting reusable patterns, and retiring approaches that consistently fail. Learning closes the loop, feeding execution results back into better intent capture and translation. The goal is organizational capability growth—each cycle should make the next one faster and more reliable.
 
 ## Guiding Principles
 
@@ -49,33 +49,12 @@ Reasoning is always visible and auditable. When an AI system makes a decision, y
 ### Mirrors, Not Slot Machines
 Systems reflect user intention back accurately rather than optimizing for engagement or addiction. A mirror helps you see yourself clearly. A slot machine exploits psychology for its own goals.
 
+### Ownership by Design
+Organizations should be able to inspect, modify, and operate systems—not just consume them. The goal is capability transfer: skills that stay with the team, data the organization owns, and systems designed so you eventually don't need external help to run them.
+
 ### Accessibility by Default
-Inclusion is built into every process from the start, not bolted on as compliance. Accessibility isn't a feature—it's a constraint that makes systems better for everyone.
+Inclusion is built into every process from the start, not bolted on as compliance. [Accessibility is alignment work](/writing/accessibility-as-alignment-work)—the same problems that make systems work for people with disabilities make them work for AI.
 
-## Signature Metrics
+---
 
-Enablement Engineering measures what matters for capability extension:
-
-| Metric | Definition | What It Reveals |
-|--------|------------|-----------------|
-| **Friction Index (FI)** | Time from intention to first meaningful step | How much the system accelerates action |
-| **Idea Throughput (IT)** | Distinct solution attempts per week per problem | Creative velocity and exploration capacity |
-| **Agency Delta (ΔA)** | % of tasks completed without expert intervention | Capability transfer and independence |
-| **Accessibility Quality (AQ)** | WCAG-mapped defects per artifact | Inclusion built into outputs |
-| **Cycle Time (CT)** | Idea to usable outcome | End-to-end system velocity |
-
-## Why "Engineering"?
-
-The word is intentional. Enablement Engineering isn't a philosophy or a framework—it's a discipline with practices, patterns, and measurable outcomes. Engineers build things that work reliably. Enablement Engineers build AI systems that reliably extend human capability.
-
-The methodology emerged from a simple observation: the teams struggling most with AI adoption weren't lacking technology. They were lacking the infrastructure to trust AI systems enough to rely on them. Enablement Engineering builds that infrastructure.
-
-## The Alternative
-
-Without enablement thinking, AI implementations tend toward two failure modes:
-
-**Over-automation**: Systems that replace human judgment entirely, creating black boxes that work until they don't—and when they fail, no one understands why or how to fix them.
-
-**Under-utilization**: Systems that sit unused because teams don't trust them, can't verify their outputs, or find them too rigid for real-world complexity.
-
-Enablement Engineering threads the needle: AI systems capable enough to meaningfully extend human reach, transparent enough to earn trust, and flexible enough to evolve with changing needs.
+*See [What is Enablement Engineering?](/writing/what-is-enablement-engineering) for the philosophy, or explore [Projects](/work) for the methodology applied.*

@@ -2,6 +2,7 @@
 title: "Building Ladders: Extending Human Agency with AI"
 description: "Technology should amplify human capability, not constrain it. A manifesto for enablement engineering."
 publishedAt: 2024-08-15
+modifiedAt: 2026-01-02
 type: "essay"
 featured: true
 tags: ["philosophy", "ai", "enablement", "agency"]

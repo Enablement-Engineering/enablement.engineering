@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <pattern id="zubaz" patternUnits="userSpaceOnUse" width="200" height="200">
+      <rect width="200" height="200" fill="white"/>
+      <!-- Blue wavy stripes -->
+      <path d="M-20,10 Q30,0 40,20 T100,10 T160,20 T220,10" stroke="#00338D" stroke-width="12" fill="none"/>
+      <path d="M-20,50 Q30,40 40,60 T100,50 T160,60 T220,50" stroke="#00338D" stroke-width="12" fill="none"/>
+      <path d="M-20,90 Q30,80 40,100 T100,90 T160,100 T220,90" stroke="#00338D" stroke-width="12" fill="none"/>
+      <path d="M-20,130 Q30,120 40,140 T100,130 T160,140 T220,130" stroke="#00338D" stroke-width="12" fill="none"/>
+      <path d="M-20,170 Q30,160 40,180 T100,170 T160,180 T220,170" stroke="#00338D" stroke-width="12" fill="none"/>
+      <path d="M-20,210 Q30,200 40,220 T100,210 T160,220 T220,210" stroke="#00338D" stroke-width="12" fill="none"/>
+      <!-- Red wavy stripes (offset) -->
+      <path d="M-20,30 Q30,20 40,40 T100,30 T160,40 T220,30" stroke="#C60C30" stroke-width="8" fill="none"/>
+      <path d="M-20,70 Q30,60 40,80 T100,70 T160,80 T220,70" stroke="#C60C30" stroke-width="8" fill="none"/>
+      <path d="M-20,110 Q30,100 40,120 T100,110 T160,120 T220,110" stroke="#C60C30" stroke-width="8" fill="none"/>
+      <path d="M-20,150 Q30,140 40,160 T100,150 T160,160 T220,150" stroke="#C60C30" stroke-width="8" fill="none"/>
+      <path d="M-20,190 Q30,180 40,200 T100,190 T160,200 T220,190" stroke="#C60C30" stroke-width="8" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#zubaz)"/>
+</svg>

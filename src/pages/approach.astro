@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="How We Work | Enablement Engineering" description="The methodology behind agentic systems—from the Core Four to Glass Box AI. Understand how we build transparent, auditable AI orchestration.">
+<Layout title="How We Work | Enablement Engineering" description="AI systems that produce evidence, not just outputs. For teams where 'the AI said so' isn't an acceptable answer.">
 	<section class="py-16 lg:py-24">
 		<div class="max-w-4xl mx-auto">
 			<!-- Header -->
@@ -11,48 +11,29 @@ import Layout from '../layouts/Layout.astro';
 					How We Work
 				</h1>
 				<p class="text-xl lg:text-2xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
-					Transparent methodology for building AI systems that actually work—and that you can audit, extend, and own.
+					AI systems that produce evidence, not just outputs. For teams where "the AI said so" isn't an acceptable answer.
 				</p>
 			</div>
 
-			<!-- The Core Four -->
+			<!-- The Reality -->
+			<div class="card-base p-8 lg:p-12 mb-12 bg-neutral-50">
+				<p class="text-lg text-neutral-700 mb-6">
+					If you've been asked to "implement AI" without a clear answer for how you'll audit it, explain it to regulators, or defend it when something goes wrong—you're in the right place.
+				</p>
+				<p class="text-lg text-neutral-700">
+					Most AI implementations fail in one of two ways: <strong class="text-ink">black boxes that work until they don't</strong> (and when they fail, no one can explain why), or <strong class="text-ink">systems that sit unused</strong> because teams don't trust outputs they can't verify.
+				</p>
+			</div>
+
+			<!-- The Core Insight: Why Procedures Matter -->
 			<div class="card-base p-8 lg:p-12 mb-12 off-kilter-0-5">
-				<h2 class="text-2xl font-bold text-ink mb-6">The Core Four</h2>
-				<p class="text-lg text-neutral-600 mb-8">
-					Every agentic system comes down to four elements:
-				</p>
-				<div class="grid md:grid-cols-2 gap-6">
-					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-primary-400">
-						<h3 class="text-xl font-semibold text-ink mb-2">Context</h3>
-						<p class="text-neutral-600">What the agent knows—the information, constraints, and domain understanding it operates with.</p>
-					</div>
-					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-primary-400">
-						<h3 class="text-xl font-semibold text-ink mb-2">Model</h3>
-						<p class="text-neutral-600">The intelligence layer—the reasoning engine that processes context and generates responses.</p>
-					</div>
-					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-accent-500">
-						<h3 class="text-xl font-semibold text-ink mb-2">Prompt</h3>
-						<p class="text-neutral-600">The instructions—how you shape behavior, set constraints, and define expected outputs.</p>
-					</div>
-					<div class="bg-neutral-50 p-6 rounded-xl border-l-4 border-l-accent-500">
-						<h3 class="text-xl font-semibold text-ink mb-2">Tools</h3>
-						<p class="text-neutral-600">The actions it can take—discrete operations that connect reasoning to real-world effects.</p>
-					</div>
-				</div>
-				<p class="text-lg text-ink font-semibold mt-8">
-					This is what turns AI coding into agentic coding.
-				</p>
-			</div>
-
-			<!-- Why Procedures Matter -->
-			<div class="card-base p-8 lg:p-12 mb-12">
-				<h2 class="text-2xl font-bold text-ink mb-6">Why Procedures Matter</h2>
+				<h2 class="text-2xl font-bold text-ink mb-6">The Core Insight</h2>
 				<p class="text-xl text-ink font-semibold mb-6">
-					Tool calls are the unit of trusted agent work.
+					The procedures are the audit trail.
 				</p>
 				<div class="prose prose-lg max-w-none text-neutral-700 mb-8">
 					<p>
-						When an agent calls a tool, it's quantizing fuzzy natural language into a discrete, auditable operation. The more of your tokens that become tool calls, the more your system is:
+						When an agent calls a tool, it's quantizing fuzzy natural language into a discrete, auditable operation. Every tool call is evidence that the system:
 					</p>
 				</div>
 
@@ -64,7 +45,7 @@ import Layout from '../layouts/Layout.astro';
 							</svg>
 						</div>
 						<div>
-							<h3 class="font-semibold text-ink">Understanding intent correctly</h3>
+							<h3 class="font-semibold text-ink">Understood intent correctly</h3>
 							<p class="text-neutral-600">It parsed what you wanted</p>
 						</div>
 					</div>
@@ -75,8 +56,8 @@ import Layout from '../layouts/Layout.astro';
 							</svg>
 						</div>
 						<div>
-							<h3 class="font-semibold text-ink">Routing successfully</h3>
-							<p class="text-neutral-600">It matched intent to the right procedure</p>
+							<h3 class="font-semibold text-ink">Routed to the right procedure</h3>
+							<p class="text-neutral-600">It matched intent to a known, tested process</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-4 bg-neutral-50 rounded-lg">
@@ -86,88 +67,45 @@ import Layout from '../layouts/Layout.astro';
 							</svg>
 						</div>
 						<div>
-							<h3 class="font-semibold text-ink">Operating auditably</h3>
-							<p class="text-neutral-600">The output came from a known, tested process</p>
+							<h3 class="font-semibold text-ink">Produced auditable output</h3>
+							<p class="text-neutral-600">The result came from documented steps with logged evidence</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="bg-neutral-100 p-6 rounded-xl border-l-4 border-l-secondary-500">
-					<p class="text-neutral-700 mb-4">
-						<strong class="text-ink">Skills</strong> (Claude skills, and the emerging open standard) are packaged procedures—portable, governed, documented.
-					</p>
-					<p class="text-ink font-semibold">
+				<div class="bg-secondary-900 text-neutral-50 p-6 rounded-xl">
+					<p class="text-lg font-semibold mb-2">
 						Teams don't scale on clever prompting. They scale on standardized procedures with governance.
 					</p>
-					<p class="text-neutral-600 mt-4 italic">
+					<p class="text-neutral-300">
 						For accessibility and compliance work, this isn't optional. The procedures ARE the audit trail.
 					</p>
 				</div>
 			</div>
 
-			<!-- The Operating Method -->
-			<div class="mb-16">
-				<h2 class="text-3xl font-bold text-ink mb-8 text-center">The Operating Method</h2>
-				<p class="text-lg text-neutral-600 text-center mb-12 max-w-2xl mx-auto">
-					Intent → Translation → Orchestration → Execution → Evidence → Learning
-				</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					<div class="card-base p-6 off-kilter-0-5">
-						<div class="text-sm font-medium text-primary-600 mb-2">Step 1</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Intent</h3>
-						<p class="text-neutral-600 text-sm">
-							Capture the job to be done + constraints. What are you actually trying to accomplish?
-						</p>
-					</div>
-
-					<div class="card-base p-6">
-						<div class="text-sm font-medium text-primary-600 mb-2">Step 2</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Translation</h3>
-						<p class="text-neutral-600 text-sm">
-							Convert intent into unambiguous tasks. Structure the fuzzy into the precise.
-						</p>
-					</div>
-
-					<div class="card-base p-6 off-kilter-neg-0-5">
-						<div class="text-sm font-medium text-primary-600 mb-2">Step 3</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Orchestration</h3>
-						<p class="text-neutral-600 text-sm">
-							Tools, agents, roles, gates, governance. Design how the pieces work together.
-						</p>
-					</div>
-
-					<div class="card-base p-6">
-						<div class="text-sm font-medium text-accent-600 mb-2">Step 4</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Execution</h3>
-						<p class="text-neutral-600 text-sm">
-							Humans + agents act; checks are built-in. The system does the work with oversight.
-						</p>
-					</div>
-
-					<div class="card-base p-6 off-kilter-0-5">
-						<div class="text-sm font-medium text-accent-600 mb-2">Step 5</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Evidence</h3>
-						<p class="text-neutral-600 text-sm">
-							Logs, diffs, screenshots, reasoning traces. Everything that happened, documented.
-						</p>
-					</div>
-
-					<div class="card-base p-6">
-						<div class="text-sm font-medium text-accent-600 mb-2">Step 6</div>
-						<h3 class="text-xl font-semibold text-ink mb-2">Learning</h3>
-						<p class="text-neutral-600 text-sm">
-							Review to prune/extend and update. The system improves through use.
-						</p>
-					</div>
-				</div>
+			<!-- The Framework -->
+			<div class="grid md:grid-cols-2 gap-6 mb-12">
+				<a href="/writing/core-four-framework" class="card-base p-6 hover:border-primary-300 transition-colors group no-underline">
+					<h3 class="text-xl font-semibold text-ink mb-2 group-hover:text-primary-600">The Core Four Framework</h3>
+					<p class="text-neutral-600 mb-4">
+						Context, Model, Prompt, and Tools—the four elements of every agentic system. Tools are where trust lives.
+					</p>
+					<span class="text-primary-600 font-medium">Read the framework →</span>
+				</a>
+				<a href="/definitions/enablement-engineering" class="card-base p-6 hover:border-primary-300 transition-colors group no-underline">
+					<h3 class="text-xl font-semibold text-ink mb-2 group-hover:text-primary-600">The Operating Method</h3>
+					<p class="text-neutral-600 mb-4">
+						Intent → Translation → Orchestration → Execution → Evidence → Learning. Six phases that close the loop.
+					</p>
+					<span class="text-primary-600 font-medium">See the full methodology →</span>
+				</a>
 			</div>
 
 			<!-- Glass Box AI -->
 			<div class="card-base p-8 lg:p-12 mb-12 bg-neutral-50 off-kilter-neg-0-5">
-				<h2 class="text-2xl font-bold text-ink mb-6">Glass Box AI</h2>
+				<h2 class="text-2xl font-bold text-ink mb-6">Glass Box, Not Black Box</h2>
 				<p class="text-lg text-neutral-600 mb-8">
-					We build systems where the reasoning is visible, not just the output.
+					We build systems where reasoning is visible, not just outputs.
 				</p>
 
 				<div class="grid md:grid-cols-2 gap-6 mb-8">
@@ -178,7 +116,7 @@ import Layout from '../layouts/Layout.astro';
 						</svg>
 						<div>
 							<h3 class="font-semibold text-ink mb-1">Visible procedures</h3>
-							<p class="text-sm text-neutral-600">You can see which procedure was called and why</p>
+							<p class="text-sm text-neutral-600">See which procedure was called and why</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-3">
@@ -187,7 +125,7 @@ import Layout from '../layouts/Layout.astro';
 						</svg>
 						<div>
 							<h3 class="font-semibold text-ink mb-1">Surfaced errors</h3>
-							<p class="text-sm text-neutral-600">Error states are surfaced, not hidden</p>
+							<p class="text-sm text-neutral-600">Error states are visible, not hidden</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-3">
@@ -196,7 +134,7 @@ import Layout from '../layouts/Layout.astro';
 						</svg>
 						<div>
 							<h3 class="font-semibold text-ink mb-1">Human oversight</h3>
-							<p class="text-sm text-neutral-600">Human oversight is built into the loop</p>
+							<p class="text-sm text-neutral-600">Human judgment built into the loop</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-3">
@@ -205,42 +143,40 @@ import Layout from '../layouts/Layout.astro';
 						</svg>
 						<div>
 							<h3 class="font-semibold text-ink mb-1">Audit trails</h3>
-							<p class="text-sm text-neutral-600">Audit trails exist for compliance</p>
+							<p class="text-sm text-neutral-600">Documentation that survives compliance review</p>
 						</div>
 					</div>
 				</div>
 
-				<div class="bg-white p-6 rounded-xl border border-neutral-200">
-					<p class="text-neutral-700">
-						The opposite—<strong class="text-ink">black box AI</strong>—might work for low-stakes applications. For accessibility, legal compliance, or anywhere correctness matters, you need glass box.
-					</p>
-				</div>
+				<p class="text-neutral-700">
+					Black box AI might work for low-stakes applications. For accessibility, legal compliance, or anywhere you need to explain decisions to auditors, regulators, or skeptical stakeholders—you need glass box.
+				</p>
 			</div>
 
-			<!-- What This Means for You -->
+			<!-- What You Get -->
 			<div class="card-base p-8 lg:p-12 mb-12 off-kilter-0-5">
-				<h2 class="text-2xl font-bold text-ink mb-6">What This Means for You</h2>
+				<h2 class="text-2xl font-bold text-ink mb-6">What You Get</h2>
 				<div class="grid md:grid-cols-2 gap-6">
 					<div class="flex items-start gap-4">
 						<div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
 							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 							</svg>
 						</div>
 						<div>
-							<h3 class="text-lg font-semibold text-ink mb-1">Agents that work</h3>
-							<p class="text-neutral-600">Systems that actually accomplish what you need, reliably.</p>
+							<h3 class="text-lg font-semibold text-ink mb-1">Evidence that survives audit</h3>
+							<p class="text-neutral-600">Logs, traces, and documentation you can show to regulators.</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4">
 						<div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
 							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 							</svg>
 						</div>
 						<div>
-							<h3 class="text-lg font-semibold text-ink mb-1">Reasoning you can audit</h3>
-							<p class="text-neutral-600">Understand why decisions were made, not just what happened.</p>
+							<h3 class="text-lg font-semibold text-ink mb-1">Systems that explain themselves</h3>
+							<p class="text-neutral-600">Language you can use when legal asks "how does this work?"</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4">
@@ -251,18 +187,18 @@ import Layout from '../layouts/Layout.astro';
 						</div>
 						<div>
 							<h3 class="text-lg font-semibold text-ink mb-1">Procedures you own</h3>
-							<p class="text-neutral-600">Portable, governed, improvable. No vendor lock-in.</p>
+							<p class="text-neutral-600">Portable, modifiable, improvable. No vendor lock-in.</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4">
 						<div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
 							<svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
 							</svg>
 						</div>
 						<div>
-							<h3 class="text-lg font-semibold text-ink mb-1">Independence over time</h3>
-							<p class="text-neutral-600">Built for you to own and extend. No ongoing dependency required.</p>
+							<h3 class="text-lg font-semibold text-ink mb-1">A path to independence</h3>
+							<p class="text-neutral-600">Built for you to own and extend. The goal is to not need us.</p>
 						</div>
 					</div>
 				</div>
@@ -274,11 +210,16 @@ import Layout from '../layouts/Layout.astro';
 					Ready to see this in action?
 				</h2>
 				<p class="text-lg text-neutral-600 mb-8">
-					Explore our service offerings to find the right engagement model for your needs.
+					Explore our services or see the methodology applied in real projects.
 				</p>
-				<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-secondary-900 hover:bg-accent-600 h-12 px-10 no-underline">
-					See Our Services
-				</a>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="/services" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-accent-500 text-secondary-900 hover:bg-accent-600 h-12 px-10 no-underline">
+						See Our Services
+					</a>
+					<a href="/work" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-lg font-semibold bg-secondary-900 text-neutral-50 hover:bg-secondary-800 h-12 px-10 no-underline">
+						View Projects
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
