@@ -450,6 +450,17 @@
   .prose code::after {
     content: none;
   }
+
+  /* Table overflow handling for mobile */
+  .prose table {
+    @apply block overflow-x-auto whitespace-nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .prose table {
+      @apply table whitespace-normal;
+    }
+  }
 }
 
 /* Utility layer styles */
