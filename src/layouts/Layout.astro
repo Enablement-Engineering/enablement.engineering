@@ -6,12 +6,17 @@ import Footer from '../components/Footer.astro';
 export interface Props {
 	title: string;
 	description?: string;
+	ogImage?: string;
 	showGrid?: boolean;
 }
 
+const SITE_NAME = "Enablement Engineering";
+const SITE_URL = "https://enablement.engineering";
+
 const {
 	title,
-	description = "Enablement Engineering - Building capabilities through technology and learning",
+	description = "AI systems that extend human capability. Custom agentic systems with glass-box architecture—transparent, auditable, and yours to own.",
+	ogImage = "/og-image.png",
 	showGrid = false
 } = Astro.props;
 
@@ -26,20 +31,23 @@ const currentPage = Astro.url.pathname;
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={SITE_NAME} />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${SITE_URL}${ogImage}`} />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
+		<!-- Twitter/X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${SITE_URL}${ogImage}`} />
 	</head>
 	<body class="bg-paper text-ink font-sans antialiased pt-20 md:pt-24">
 		<!-- Skip Link -->
