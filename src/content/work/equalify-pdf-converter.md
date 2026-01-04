@@ -3,7 +3,7 @@ title: "Equalify PDF to Semantic Markup Converter"
 client: "University of Illinois Chicago"
 description: "Transforming inaccessible academic PDFs into adaptive, semantic web experiences at scale."
 engagement: "build"
-duration: "Ongoing (beta release January 2026)"
+duration: "Ongoing (beta release March 2026)"
 featured: true
 publishedAt: 2024-09-01
 modifiedAt: 2026-01-02
@@ -74,7 +74,7 @@ The pipeline is architected to become a packageable skill — a trusted procedur
 - **Cost reduction target:** 95-99% vs manual remediation
 - **Output:** Permanent, citable, semantically rich accessible content
 - **Integration:** Canvas LMS native
-- **Beta release:** January 2026
+- **Beta release:** March 2026
 
 ## Speaking
 
