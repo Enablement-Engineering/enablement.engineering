@@ -4,7 +4,7 @@ client: "Enablement Engineering"
 description: "Making all information I can access accessible to my AI agents—videos, documents, web pages, audio, even authenticated browser sessions."
 engagement: "personal"
 duration: "Ongoing (active development)"
-featured: true
+featured: false
 publishedAt: 2024-10-01
 modifiedAt: 2026-01-03
 tags: ["ai-infrastructure", "content-conversion", "mcp", "claude-code", "developer-tools", "open-source"]
