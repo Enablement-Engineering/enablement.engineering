@@ -37,3 +37,16 @@ docs/planning/
 
 # Claude Code local settings (machine-specific)
 .claude/settings.local.json
+
+# Draft content (not ready for publication)
+src/content/ladders/context-foveation-patterns.md
+src/content/ladders/semantic-bridge-building.md
+src/content/definitions/information-foveated-rendering.md
+src/content/definitions/linguistic-knitting.md
+src/content/definitions/multidimensional-conversations.md
+src/content/definitions/polysemous-components.md
+src/content/definitions/semantic-density.md
+src/content/definitions/semantic-space.md
+src/content/writing/information-foveated-rendering.md
+src/content/writing/linguistic-knitting.md
+src/content/writing/multidimensional-conversations.md
