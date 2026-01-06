@@ -2,7 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const allWriting = await getCollection('writing');
+const isDev = import.meta.env.DEV;
+
+const allWriting = await getCollection('writing', ({ data }) => {
+	// In production, filter out drafts; in dev, show all
+	if (isDev) return true;
+	return data.draft !== true;
+});
+
 const sortedWriting = allWriting.sort((a, b) =>
 	b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
@@ -46,8 +53,13 @@ function formatDate(date: Date) {
 								<article class="card-base p-6 lg:p-8 hover:shadow-lg transition-all">
 									<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
 										<div class="flex-1">
-											<h3 class="text-xl lg:text-2xl font-semibold text-ink mb-2 group-hover:text-primary-600 transition-colors">
+											<h3 class="text-xl lg:text-2xl font-semibold text-ink mb-2 group-hover:text-primary-600 transition-colors flex items-center gap-2">
 												{article.data.title}
+												{article.data.draft && (
+													<span class="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded uppercase">
+														Draft
+													</span>
+												)}
 											</h3>
 											<p class="text-neutral-600 leading-relaxed mb-4">
 												{article.data.description}

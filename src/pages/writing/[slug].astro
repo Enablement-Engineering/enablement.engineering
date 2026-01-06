@@ -3,7 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const writingEntries = await getCollection('writing');
+	const isDev = import.meta.env.DEV;
+	const writingEntries = await getCollection('writing', ({ data }) => {
+		// In production, filter out drafts; in dev, show all
+		if (isDev) return true;
+		return data.draft !== true;
+	});
 	return writingEntries.map(entry => ({
 		params: { slug: entry.slug },
 		props: { entry },
@@ -51,10 +56,15 @@ const typeColors = {
 					Back
 				</button>
 
-				<div class="mb-4">
+				<div class="mb-4 flex items-center gap-2">
 					<span class={`inline-block px-3 py-1 text-sm font-medium rounded-full ${typeColors[entry.data.type]}`}>
 						{typeLabels[entry.data.type]}
 					</span>
+					{entry.data.draft && (
+						<span class="inline-block px-3 py-1 text-sm font-medium rounded-full bg-amber-100 text-amber-700 uppercase">
+							Draft
+						</span>
+					)}
 				</div>
 
 				<h1 class="text-3xl lg:text-4xl font-bold text-ink mb-4 leading-tight">
