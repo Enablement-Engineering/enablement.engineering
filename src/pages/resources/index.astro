@@ -2,9 +2,17 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all resources
-const definitions = await getCollection('definitions');
-const ladders = await getCollection('ladders');
+const isDev = import.meta.env.DEV;
+
+// Get all resources (filter drafts in production)
+const definitions = await getCollection('definitions', ({ data }) => {
+	if (isDev) return true;
+	return data.draft !== true; // Explicitly check for draft: true
+});
+const ladders = await getCollection('ladders', ({ data }) => {
+	if (isDev) return true;
+	return data.draft !== true; // Explicitly check for draft: true
+});
 
 // Sort definitions alphabetically by term
 const sortedDefinitions = definitions.sort((a, b) =>
