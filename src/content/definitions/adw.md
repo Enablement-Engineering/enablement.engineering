@@ -121,4 +121,4 @@ ADWs are the automation layer—powerful but not required for the foundational p
 
 ---
 
-*ADWs represent the highest abstraction in the tactical AI coding framework. For foundational context management principles, see [Context Engineering](/definitions/context-engineering). For practical implementation patterns, see [Context Foveation Patterns](/ladders/context-foveation-patterns). For the complete framework, see Indy Dev Dan's [Tactical Agentic Coding](https://agenticengineer.com/tactical-agentic-coding).*
+*ADWs represent the highest abstraction in the tactical AI coding framework. For foundational context management principles, see [Context Engineering](/definitions/context-engineering). For the complete framework, see Indy Dev Dan's [Tactical Agentic Coding](https://agenticengineer.com/tactical-agentic-coding).*

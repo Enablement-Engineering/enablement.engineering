@@ -107,7 +107,7 @@ The Two-Phase Workflow exemplifies this: one fresh agent plans the work and writ
 
 ---
 
-*Context engineering establishes what information to load. For how to load it at variable resolution based on task focus, see [Information Foveated Rendering](/definitions/information-foveated-rendering). For why AI reliability varies across domains, see [Semantic Density](/definitions/semantic-density). For practical implementation patterns, see [Context Foveation Patterns](/ladders/context-foveation-patterns).*
+*Context engineering establishes what information to load. For the complete tactical AI coding framework, see Indy Dev Dan's [Tactical Agentic Coding](https://agenticengineer.com/tactical-agentic-coding).*
 
 [^1]: The in-loop vs. out-of-loop framing draws from Indy Dev Dan's [Tactical Agentic Coding](https://agenticengineer.com/tactical-agentic-coding) course, which provides an excellent foundation for thinking about context leverage points in agentic development. The framework identifies 12 leverage points: 4 in-agent (Context, Model, Prompt, Tools) and 8 through-agent (Standard Out, Types, Documentation, Tests, Architecture, Plans, Templates, [ADWs](/definitions/adw)).
 
