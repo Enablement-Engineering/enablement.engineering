@@ -3,7 +3,22 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const ladderEntries = await getCollection('ladders');
+	// Always exclude drafts in production builds
+	// import.meta.env.DEV is only true during astro dev
+	console.log('[LADDERS] Build mode - DEV:', import.meta.env.DEV, 'MODE:', import.meta.env.MODE, 'PROD:', import.meta.env.PROD);
+	
+	const allLadders = await getCollection('ladders');
+	console.log('[LADDERS] All ladder files:', allLadders.map(l => `${l.slug} (draft: ${l.data.draft})`));
+	
+	const ladderEntries = await getCollection('ladders', ({ data }) => {
+		if (import.meta.env.DEV) {
+			return true; // Show all entries in dev mode
+		}
+		return !data.draft; // Exclude drafts in production
+	});
+	
+	console.log('[LADDERS] Filtered entries:', ladderEntries.map(l => l.slug));
+	
 	return ladderEntries.map(entry => ({
 		params: { slug: entry.slug },
 		props: { entry },
@@ -53,8 +68,13 @@ const updatedDate = entry.data.modifiedAt?.toLocaleDateString('en-US', {
 					)}
 				</div>
 
-				<h1 class="text-3xl lg:text-4xl font-bold text-ink mb-4 leading-tight">
+				<h1 class="text-3xl lg:text-4xl font-bold text-ink mb-4 leading-tight flex items-center gap-3">
 					{entry.data.title}
+					{entry.data.draft && (
+						<span class="inline-block px-3 py-1 text-sm font-medium rounded-full bg-amber-100 text-amber-700 uppercase">
+							Draft
+						</span>
+					)}
 				</h1>
 
 				<p class="text-xl text-neutral-600 mb-6">
