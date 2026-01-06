@@ -14,7 +14,8 @@ export async function getStaticPaths() {
 		if (import.meta.env.DEV) {
 			return true; // Show all entries in dev mode
 		}
-		return !data.draft; // Exclude drafts in production
+		// Explicitly check for draft: true (handle undefined as false)
+		return data.draft !== true;
 	});
 	
 	console.log('[LADDERS] Filtered entries:', ladderEntries.map(l => l.slug));

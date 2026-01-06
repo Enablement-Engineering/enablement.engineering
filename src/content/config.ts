@@ -31,6 +31,7 @@ const writing = defineCollection({
     modifiedAt: z.date().optional(),
     type: z.enum(['essay', 'case-study', 'prompt-lab', 'note']),
     featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     external: z.boolean().default(false),
     externalUrl: z.string().url().optional(),
@@ -43,6 +44,7 @@ const definitions = defineCollection({
   schema: z.object({
     term: z.string(),
     shortDefinition: z.string(),
+    draft: z.boolean().default(false),
     relatedTerms: z.array(z.string()).default([]),
   }),
 });
@@ -55,6 +57,7 @@ const ladders = defineCollection({
     description: z.string(),
     capabilities: z.array(z.string()),
     featured: z.boolean().default(false),
+    draft: z.boolean().optional().default(false),
     tags: z.array(z.string()).default([]),
     publishedAt: z.date(),
     modifiedAt: z.date().optional(),
