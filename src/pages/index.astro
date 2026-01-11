@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { LogoWide } from '../components/Logo';
+import { RandomTagline } from '../components/RandomTagline';
 import { getCollection } from 'astro:content';
 
 // Get the 2 most recent writing posts
@@ -27,16 +28,7 @@ const recentWriting = allWriting
 					client:load
 				/>
 			</div>
-			<div class="max-w-4xl mt-8 lg:mt-12">
-				<h1 class="text-4xl lg:text-6xl font-bold text-ink leading-tight">
-					AI systems that extend human capability.
-				</h1>
-			</div>
-			<div class="mt-6 lg:mt-8">
-				<a href="/approach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent-500 text-secondary-900 hover:bg-accent-600 h-12 px-10 no-underline">
-					Our Approach
-				</a>
-			</div>
+			<RandomTagline client:load />
 		</div>
 	</section>
 
