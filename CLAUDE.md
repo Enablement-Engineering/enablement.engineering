@@ -19,12 +19,16 @@ Astro 5 + React + Tailwind CSS + TypeScript (strict mode)
 ### Content Collections (src/content/)
 Content is managed through Astro's content collections with Zod schemas defined in `src/content/config.ts`:
 
-- **writing/** - Essays and articles (`type: essay | case-study | prompt-lab | note`)
+- **writing/** - Essays and articles (`type: essay | case-study | prompt-lab | note`, supports `draft` and `featured`)
 - **work/** - Case studies with client info and results metrics
-- **ladders/** - Reusable AI patterns/procedures with capabilities lists
-- **definitions/** - Glossary terms with related terms
+- **ladders/** - Reusable AI patterns/procedures with capabilities lists (supports `draft` and `featured`)
+- **definitions/** - Glossary terms with related terms (supports `draft`)
 
 Each collection has typed frontmatter - check `config.ts` for required fields before creating content.
+
+**Featured Content Policy:** Only ONE item per collection should be `featured: true` at a time. Currently featured: Alt Text Generation (ladders).
+
+**Draft Content:** Items with `draft: true` are visible in dev mode with a yellow badge but hidden in production builds.
 
 ### Layout System
 Single layout at `src/layouts/Layout.astro` wraps all pages with:

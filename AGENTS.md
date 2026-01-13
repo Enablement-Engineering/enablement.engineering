@@ -142,18 +142,24 @@ Schemas defined in `src/content/config.ts`:
 
 ### `writing` (Articles)
 ```typescript
-{ title, description, publishedAt, modifiedAt?, type, featured, tags, external, externalUrl? }
+{ title, description, publishedAt, modifiedAt?, type, featured, draft, tags, external, externalUrl? }
 ```
 
 ### `definitions` (Glossary)
 ```typescript
-{ term, shortDefinition, relatedTerms }
+{ term, shortDefinition, draft, relatedTerms }
 ```
 
 ### `ladders` (Tools/Patterns)
 ```typescript
-{ title, description, capabilities, featured, tags, publishedAt, modifiedAt? }
+{ title, description, capabilities, featured, draft, tags, publishedAt, modifiedAt? }
 ```
+
+**Featured Content Policy:**
+- Only **ONE** item per collection should be `featured: true` at a time
+- Featured items appear first in listings and get special visual treatment
+- Before marking new content as featured, unfeature existing items in that collection
+- Currently featured: Alt Text Generation (ladders)
 
 ## UI Component Patterns
 
@@ -211,6 +217,15 @@ import { MyComponent } from '@/components/MyComponent';
   className
 )}>
 ```
+
+## Draft Content
+
+Content marked with `draft: true` is:
+- Visible in development mode (`npm run dev`) with a yellow "DRAFT" badge
+- Hidden in production builds (`npm run build`)
+- Useful for work-in-progress content that shouldn't be published yet
+
+To publish draft content, simply remove the `draft: true` field or set it to `false`.
 
 ## Don'ts
 

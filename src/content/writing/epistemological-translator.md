@@ -70,3 +70,7 @@ Accessibility isn't a cost center. It's alignment infrastructure.
 ---
 
 *The same question, approached for different reasons by different communities, reveals unexpected convergence. Perhaps meaningful access has always been the point.*
+
+---
+
+*For the mechanical process underlying AI translation capabilities, see [Linguistic Knitting](/writing/linguistic-knitting). For how interfaces serve as multidimensional conversations across modalities, see [UIs as Multidimensional Conversations](/writing/multidimensional-conversations).*

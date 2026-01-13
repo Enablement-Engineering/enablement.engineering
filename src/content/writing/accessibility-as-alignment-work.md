@@ -167,4 +167,6 @@ The accessibility community has been building ladders for thirty years. It's tim
 
 *For a concrete example of these principles in practice, see the [Equalify PDF Converter](/work/equalify-pdf-converter) project.*
 
-*For the broader philosophy of glass box AI, see [What is Enablement Engineering?](/writing/what-is-enablement-engineering)*
+*For the broader philosophy of glass box AI, see [What is Enablement Engineering?](/writing/what-is-enablement-engineering).*
+
+*For the framework of interfaces as parallel conversations across modalities, see [UIs as Multidimensional Conversations](/writing/multidimensional-conversations).*
