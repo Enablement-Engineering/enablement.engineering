@@ -3,7 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import parchmentTheme from './src/themes/parchment-light.json';
+import parchmentLight from './src/themes/parchment-light.json';
+import parchmentDark from './src/themes/parchment-dark.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +12,11 @@ export default defineConfig({
   integrations: [tailwind(), react(), sitemap()],
   markdown: {
     shikiConfig: {
-      theme: parchmentTheme,
+      themes: {
+        light: parchmentLight,
+        dark: parchmentDark,
+      },
+      defaultColor: false,
     },
   },
 });

@@ -1,5 +1,6 @@
 ---
 import { LogoSquare } from './Logo';
+import { ThemeToggle } from './ThemeToggle';
 import { navigationItems } from '../config/navigation';
 
 export interface Props {
@@ -12,10 +13,10 @@ const { currentPage } = Astro.props;
 <nav
   id="navigation"
   aria-label="Main navigation"
-  class="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-neutral-200
+  class="fixed top-0 left-0 right-0 z-40 bg-[var(--color-background)]/95 backdrop-blur-sm border-b border-[var(--color-border)]
          after:absolute after:inset-x-0 after:top-full after:h-6
-         after:bg-gradient-to-b after:from-background/95 after:via-background/50 after:to-transparent
-         after:pointer-events-none"
+         after:bg-gradient-to-b after:from-[var(--color-background)]/95 after:via-[var(--color-background)]/50 after:to-transparent
+         after:pointer-events-none transition-colors duration-200"
   style="transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);"
 >
   <div class="grid-container">
@@ -24,7 +25,7 @@ const { currentPage } = Astro.props;
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3 no-underline group">
         <LogoSquare className="w-8 h-8 transition-transform group-hover:scale-105" client:load />
-        <span class="text-xl font-semibold text-ink">Enablement Engineering</span>
+        <span class="text-xl font-semibold text-[var(--color-foreground)]">Enablement Engineering</span>
       </a>
 
       <!-- Nav Items -->
@@ -35,13 +36,14 @@ const { currentPage } = Astro.props;
             class={`transition-colors no-underline ${
               currentPage === href
                 ? 'bg-primary-400 text-secondary-900 px-4 py-2 rounded-md font-extrabold transform rotate-1.5'
-                : 'text-ink hover:text-secondary-800 font-medium'
+                : 'text-[var(--color-foreground)] hover:text-[var(--color-foreground-muted)] font-medium'
             }`}
             aria-current={currentPage === href ? 'page' : undefined}
           >
             {label}
           </a>
         ))}
+        <ThemeToggle client:load />
       </div>
     </div>
 
@@ -50,28 +52,32 @@ const { currentPage } = Astro.props;
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 no-underline">
         <LogoSquare className="w-8 h-8" client:load />
-        <span class="text-lg font-bold text-ink">Enablement Engineering</span>
+        <span class="text-lg font-bold text-[var(--color-foreground)]">Enablement Engineering</span>
       </a>
 
-      <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-toggle"
-        class="p-2 text-ink hover:text-secondary-800 transition-colors"
-        aria-label="Toggle navigation menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <!-- Mobile Controls -->
+      <div class="flex items-center space-x-2">
+        <ThemeToggle client:load />
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-toggle"
+          class="p-2 text-[var(--color-foreground)] hover:text-[var(--color-foreground-muted)] transition-colors"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Menu Dropdown -->
     <div
       id="mobile-menu"
-      class="md:hidden border-t border-neutral-200 py-4 hidden"
+      class="md:hidden border-t border-[var(--color-border)] py-4 hidden"
       aria-hidden="true"
     >
       <nav class="flex flex-col space-y-3" aria-label="Mobile navigation menu">
@@ -80,8 +86,8 @@ const { currentPage } = Astro.props;
             href={href}
             class={`py-2 transition-colors no-underline inline-block ${
               currentPage === href
-                ? 'text-ink border-b-2 border-primary-400 font-extrabold'
-                : 'text-ink hover:text-secondary-800 font-medium'
+                ? 'text-[var(--color-foreground)] border-b-2 border-primary-400 font-extrabold'
+                : 'text-[var(--color-foreground)] hover:text-[var(--color-foreground-muted)] font-medium'
             }`}
             aria-current={currentPage === href ? 'page' : undefined}
           >
