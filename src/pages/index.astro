@@ -4,8 +4,13 @@ import { LogoWide } from '../components/Logo';
 import { RandomTagline } from '../components/RandomTagline';
 import { getCollection } from 'astro:content';
 
-// Get the 2 most recent writing posts
-const allWriting = await getCollection('writing');
+// Get the 2 most recent published writing posts
+const isDev = import.meta.env.DEV;
+const allWriting = await getCollection('writing', ({ data }) => {
+	// In production, filter out drafts; in dev, show all
+	if (isDev) return true;
+	return data.draft !== true;
+});
 const recentWriting = allWriting
 	.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
 	.slice(0, 2);
